@@ -13,8 +13,16 @@ export default {
       },
       colors: {
         'primary-color': '#FFE512',
-        'typo-color': '#5C5C5C'
-      }
+        'typo-color': '#5C5C5C',
+        'text-board-color': '#3A3A3A',
+        'dropdown-hover': '#4E5356'
+      },
+      backgroundImage: {
+        'dark': 'linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%), url(\'../../assets/images/bg-dark.png\'), lightgray 50% / cover no-repeat',
+      },      
+      blur: {
+        '3': '3px',
+      },
     },
   },
   plugins: [],

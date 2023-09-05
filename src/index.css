@@ -4,8 +4,3 @@
 @tailwind components;
 @tailwind utilities;
 
-bg-dark {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat;
-    filter: blur(3px);
-}
-
