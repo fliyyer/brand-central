@@ -1,15 +1,18 @@
 import React from 'react'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
-const Button = ({ props, children }) => {
-    const { variants, onClick } = props
+const Button = ({ variant, onClick, children }) => {
     return (
-        <button onClick={onClick} className={`px-2 ${variants}`}>{children}</button>
+        <button onClick={onClick} className={`${variant}`}>
+            {children}
+        </button>
     )
 }
 
 Button.propTypes = {
-    children: propTypes.string,
-    onClick: propTypes.func
+    children: PropTypes.string,
+    onClick: PropTypes.func,
+    variant: PropTypes.string.isRequired // Pastikan variant sebagai properti yang diperlukan
 }
+
 export default Button

@@ -7,9 +7,7 @@ import RayWhite from '../../assets/images/logo-ray-white.png';
 const LoginPage = () => {
     return (
         <div
-            className="min-h-screen flex flex-col items-center justify-center relative"
-            style={{ backgroundImage: `url(${bgDark})`, backgroundSize: 'cover' }}
-        >
+            className="min-h-screen flex flex-col items-center justify-center bg-dark relative">
             <div className="absolute top-0">
                 <img src={RayWhite} alt="Logo Ray White" />
             </div>

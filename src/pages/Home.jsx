@@ -6,8 +6,7 @@ import Contents from '../layout/Home/Contents'
 
 const Home = () => {
     return (
-        <div className='w-full min-h-screen bg-cover'
-            style={{ backgroundImage: `url(${bgDark})` }}>
+        <div className='w-full min-h-screen bg-cover bg-dark'>
             <Navbar />
             <Header />
             <Contents />
