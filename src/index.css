@@ -34,3 +34,20 @@
     background-size: cover; 
     background-repeat: no-repeat;
 }
+
+.notification-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.notification-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.notification-container::-webkit-scrollbar-thumb {
+    background-color: #6B7280;
+    border-radius: 3px;
+}
+
+.notification-container::-webkit-scrollbar-thumb:hover {
+    background-color: #4B5563;
+}

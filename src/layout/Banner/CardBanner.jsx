@@ -1,7 +1,7 @@
 import React from 'react'
 import propTypes from 'prop-types'
 
-const CardSignBoard = (props) => {
+const CardBanner = (props) => {
     const { title, img, width } = props
 
     return (
@@ -25,10 +25,10 @@ const CardSignBoard = (props) => {
     )
 }
 
-CardSignBoard.propTypes = {
+CardBanner.propTypes = {
     title: propTypes.string,
     img: propTypes.string,
     width: propTypes.string
 }
 
-export default CardSignBoard
+export default CardBanner
