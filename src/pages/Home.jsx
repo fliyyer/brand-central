@@ -1,5 +1,4 @@
 import React from 'react'
-import bgDark from '../assets/images/bg-dark.png'
 import Navbar from '../components/Navbar'
 import Header from '../layout/Home/Header'
 import Contents from '../layout/Home/Contents'

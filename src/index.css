@@ -19,13 +19,13 @@
     box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.10);
     border-radius: 4px;
     z-index: 10;
-    visibility: hidden; /* Sembunyikan dropdown secara default */
+    visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.2s ease; /* Efek transisi */
+    transition: visibility 0s, opacity 0.2s ease;
 }
 
 .hover-menu:hover .hover-dropdown {
-    visibility: visible; /* Tampilkan dropdown saat menu dihover */
+    visibility: visible;
     opacity: 1;
 }
 
@@ -33,6 +33,15 @@
     background-image: url(assets//images//bg-dark.png);
     background-size: cover; 
     background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #6B7280;
+    border-radius: 3px;
 }
 
 .notification-container::-webkit-scrollbar {

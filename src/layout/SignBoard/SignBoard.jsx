@@ -22,7 +22,7 @@ const SignBoard = () => {
     return (
         <>
             <div className="flex flex-col items-center justify-center py-12 gap-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center items-center">
                     <CardSignBoard title="Sign Board 8 x 6" img={SB_8x6} width='w-[152px] h-[188px]' />
                     <CardSignBoard title="Sign Board 8 x 6 L" img={SB_8x6l} width='w-[163px] h-[120px]' />
                     <CardSignBoard title="Sign Board 8 x 10" img={SB_8x10} width='w-[151px] h-[185px]' />

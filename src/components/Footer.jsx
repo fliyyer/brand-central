@@ -1,10 +1,12 @@
 import React from 'react'
 
-function Footer() {
+function Footer(props) {
+    const { position } = props
+
     return (
-        <div className='text-center text-sm py-9 font-inter text-white'>
+        <footer className={`text-center text-sm py-9 font-inter text-white ${position}`}>
             <h1>© 2023 Brancentral | Developed by Ray White Indonesia</h1>
-        </div>
+        </footer>
     )
 }
 

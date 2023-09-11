@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 function AllTools({ onCardToolClick }) {
     return (
         <><div className="flex justify-center py-12 items-center flex-wrap gap-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-[22.58px]">
                 <CardTool
                     Label="SB"
                     Title={'Sign Board'}

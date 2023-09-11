@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import AllTools from '../AllTools/AllTools';
 import SignBoard from '../SignBoard/SignBoard';
+import Banner from '../Banner/Banner'
+import SocialMedia from '../SocialMedia/SocialMedia';
+import Flyer from '../Flyer/Flyer';
+import Namecard from '../Namecard/Namecard';
+import EmailSignature from '../EmailSignature/EmailSignature';
+import Envelope from '../Envelope/Envelope';
+import Proposal from '../Proposal/Proposal';
 
 const MenuList = () => {
     const [activeMenu, setActiveMenu] = useState('All');
@@ -16,13 +23,20 @@ const MenuList = () => {
         switch (menuTitle) {
             case 'Sign Board':
                 return <SignBoard />;
+            case 'Banner':
+                return <Banner />
             case 'Social Media':
+                return <SocialMedia />;
             case 'Flyer':
+                return <Flyer />;
             case 'Namecard':
+                return <Namecard />;
             case 'Email Signature':
+                return <EmailSignature />;
             case 'Envelope':
+                return <Envelope />;
             case 'Proposal':
-                return <AllTools onCardToolClick={handleCardToolClick} />;
+                return <Proposal />;
             default:
                 return <AllTools onCardToolClick={handleCardToolClick} />;
         }
