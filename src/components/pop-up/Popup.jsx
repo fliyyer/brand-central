@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ImgPopup from '../../assets/images/img-popup.png'
 import FindHome from '../../assets/images/find-id.png'
 import { AiOutlineSearch, AiOutlineCloseCircle } from 'react-icons/ai'
+import { Link } from "react-router-dom";
 import { filterId, searchByListing } from "../../utils/ListingId";
 
 function Popup({ onClose }) {
@@ -66,7 +67,8 @@ function Popup({ onClose }) {
                                     <h2 className="text-xs font-light">Location: {filteredListing[0].location}</h2>
                                 </div>
                             </div>
-                            <button className="h-6 bg-primary-color w-full rounded text-xs text-[#3A3A3A]">Pilih</button>
+                            <Link to='sign-board/edit'>
+                                <button className="h-6 bg-primary-color w-full rounded text-[10px] text-[#3A3A3A]">Pilih</button></Link>
                         </div>
                     ) : (
                         <img src={FindHome} alt="Property Finder" className="w-full h-auto" />
