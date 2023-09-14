@@ -35,6 +35,7 @@ const Banner200x100qrlm = () => {
                     className="text-[68px] font-bold"
                     contentEditable={true}
                     onBlur={(e) => handleEditAndSave('title', e)}
+                    suppressContentEditableWarning={true}
                 >
                     {content.title}
                 </h1>
@@ -45,6 +46,7 @@ const Banner200x100qrlm = () => {
                             className="text-[29px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('agentName', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.agentName}
                         </p>
@@ -52,6 +54,7 @@ const Banner200x100qrlm = () => {
                             className="text-[29px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('agentPhone', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.agentPhone}
                         </p>
@@ -59,17 +62,19 @@ const Banner200x100qrlm = () => {
                             className="text-[15px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('agentEmail', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.agentEmail}
                         </p>
                         <p className="flex items-center gap-2 text-[30px] font-bold" >
                             <FaPhone className="" />
-                            <span contentEditable={true} onBlur={(e) => handleEditAndSave('agentOfficePhone', e)}>{content.agentOfficePhone}</span>
+                            <span contentEditable={true} onBlur={(e) => handleEditAndSave('agentOfficePhone', e)} suppressContentEditableWarning={true}>{content.agentOfficePhone}</span>
                         </p>
                         <p
                             className="text-[15px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('officeName', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.officeName}
                         </p>
@@ -77,6 +82,7 @@ const Banner200x100qrlm = () => {
                             className="text-[15px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('officeWebsite', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.officeWebsite}
                         </p>

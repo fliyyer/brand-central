@@ -43,7 +43,6 @@ const Banner200x100foto = () => {
         setProfileImage(null);
     };
 
-    // Handler untuk membuka dialog pemilihan berkas ketika tombol "Change Photo" diklik
     const handleImageUploadClick = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click();
@@ -58,6 +57,7 @@ const Banner200x100foto = () => {
                     className="text-[68px] font-bold"
                     contentEditable={true}
                     onBlur={(e) => handleEditAndSave('title', e)}
+                    suppressContentEditableWarning={true}
                 >
                     {content.title}
                 </h1>
@@ -88,6 +88,7 @@ const Banner200x100foto = () => {
                             className="text-[29px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('agentName', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.agentName}
                         </p>
@@ -95,6 +96,7 @@ const Banner200x100foto = () => {
                             className="text-[29px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('agentPhone', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.agentPhone}
                         </p>
@@ -102,12 +104,13 @@ const Banner200x100foto = () => {
                             className="text-[15px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('agentEmail', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.agentEmail}
                         </p>
                         <p className="flex items-center gap-2 text-[30px] font-bold" >
                             <FaPhone className="" />
-                            <span contentEditable={true} onBlur={(e) => handleEditAndSave('agentOfficePhone', e)}>{content.agentOfficePhone}</span>
+                            <span contentEditable={true} onBlur={(e) => handleEditAndSave('agentOfficePhone', e)} suppressContentEditableWarning={true}>{content.agentOfficePhone}</span>
                         </p>
                     </div>
                 </div>
@@ -117,6 +120,7 @@ const Banner200x100foto = () => {
                             className="text-[15px] font-bold mt-4"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('officeName', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.officeName}
                         </p>
@@ -124,6 +128,7 @@ const Banner200x100foto = () => {
                             className="text-[15px] font-bold"
                             contentEditable={true}
                             onBlur={(e) => handleEditAndSave('officeWebsite', e)}
+                            suppressContentEditableWarning={true}
                         >
                             {content.officeWebsite}
                         </p>
