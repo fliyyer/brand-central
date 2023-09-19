@@ -9,11 +9,11 @@ const EmailSignature = () => {
         <>
             <div className="flex flex-col items-center justify-center py-12 gap-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-[19px] justify-center items-center">
-                    <CardEmailSignature title='White Email Signature' img={Email_1} />
-                    <CardEmailSignature title='Black Email Signature' img={Email_2} />
+                    <CardEmailSignature title='White Email Signature' img={Email_1} to='emailsignature/edit/1' />
+                    <CardEmailSignature title='Black Email Signature' img={Email_2} to='emailsignature/edit/2' />
                 </div>
             </div>
-            <Footer position='bottom-0 absolute right-0 left-0' />
+            <Footer position='bottom-0 md:absolute right-0 left-0' />
         </>
     )
 }

@@ -10,9 +10,9 @@ const Flyer = () => {
         <>
             <div className="flex flex-col items-center justify-center py-12 gap-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[23px] justify-center items-center">
-                    <CardFlyer title='Flyer 1' img={flyer1} />
-                    <CardFlyer title='Flyer 2' img={flyer2} />
-                    <CardFlyer title='Flyer 3' img={flyer3} />
+                    <CardFlyer title='Flyer 1' img={flyer1} to='flyer/edit/1' />
+                    <CardFlyer title='Flyer 2' img={flyer2} to='flyer/edit/2' />
+                    <CardFlyer title='Flyer 3' img={flyer3} to='flyer/edit/3' />
                 </div>
             </div>
             <Footer />

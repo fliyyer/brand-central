@@ -22,6 +22,17 @@ import SmEdit7 from './layout/SocialMedia/SmEdit7';
 import SmEdit8 from './layout/SocialMedia/SmEdit8';
 import SmEdit9 from './layout/SocialMedia/SmEdit9';
 import SmEdit10 from './layout/SocialMedia/SmEdit10';
+import FlyerEdit1 from './layout/Flyer/FlyerEdit1';
+import FlyerEdit2 from './layout/Flyer/FlyerEdit2';
+import FlyerEdit3 from './layout/Flyer/FlyerEdit3';
+import EmailSignaturEdit1 from './layout/EmailSignature/EmailSignatureEdit1';
+import EmailSignaturEdit2 from './layout/EmailSignature/EmailSignatureEdit2';
+import EnvelopeEdit1 from './layout/Envelope/EnvelopeEdit1';
+import EnvelopeEdit2 from './layout/Envelope/EnvelopeEdit2';
+import NamecardEdit1 from './layout/Namecard/NamecardEdit1';
+import NamecardEdit2 from './layout/Namecard/NamecardEdit2';
+import ProposalEdit from './layout/Proposal/ProposalEdit';
+import NamecardEdit3 from './layout/Namecard/NamecardEdit3';
 
 const router = createBrowserRouter([
     { path: '/', element: <Home /> },
@@ -46,6 +57,18 @@ const router = createBrowserRouter([
     { path: 'socialmedia/edit/8', element: <SmEdit8 /> },
     { path: 'socialmedia/edit/9', element: <SmEdit9 /> },
     { path: 'socialmedia/edit/10', element: <SmEdit10 /> },
+    { path: 'flyer/edit/1', element: <FlyerEdit1 /> },
+    { path: 'flyer/edit/2', element: <FlyerEdit2 /> },
+    { path: 'flyer/edit/3', element: <FlyerEdit3 /> },
+    { path: 'emailsignature/edit/1', element: <EmailSignaturEdit1 /> },
+    { path: 'emailsignature/edit/2', element: <EmailSignaturEdit2 /> },
+    { path: 'envelope/edit/1', element: <EnvelopeEdit1 /> },
+    { path: 'envelope/edit/2', element: <EnvelopeEdit2 /> },
+    { path: 'namecard/edit/1', element: <NamecardEdit1 /> },
+    { path: 'namecard/edit/2', element: <NamecardEdit2 /> },
+    { path: 'namecard/edit/3', element: <NamecardEdit3 onBackButtonClick={(menuTitle) => setActiveMenu(menuTitle)} /> },
+    { path: 'proposal/edit/1', element: <ProposalEdit /> },
+
 ]);
 
 function App() {

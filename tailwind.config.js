@@ -10,6 +10,9 @@ export default {
         'poppins': ['Poppins', 'sans'],
         'inter': ['Inter', 'sans'],
         'roboto': ['Roboto', 'sans'],
+        'calligraft': ['Calligraffitti', 'cursive'],
+        'lato': ['Lato', 'sans'],
+        'source-sans' : ['Source Sans 3', 'sans-serif'],
       },
       colors: {
         'primary-color': '#FFE512',
