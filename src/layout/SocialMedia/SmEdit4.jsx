@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import { BiChevronLeft } from 'react-icons/bi';
-import Instagram4 from '../../components/socialmedia/Instagram4';
+import Instagram4 from '../../components/socialmedia/Instagram4'
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
 
 const SmEdit4 = () => {

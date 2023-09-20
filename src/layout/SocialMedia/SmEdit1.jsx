@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import { BiChevronLeft } from 'react-icons/bi';
-import Instagram1 from '../../components/socialmedia/instagram1';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
+import Instagram1 from '../../components/socialmedia/Instagram1'
 
 const SmEdit1 = () => {
     const [zoom, setZoom] = useState(1);

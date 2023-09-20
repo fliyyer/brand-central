@@ -84,12 +84,6 @@ const Signboard1 = () => {
 
     return (
         <div className='w-[329px] h-[493px] bg-[#f4f4f4] px-[7px] py-[8.62px]'>
-            {isPopImgOpen && (
-                <PopImg
-                    onClose={closePopImg}
-                    images={listingImages} // Mengirimkan daftar gambar sebagai prop
-                />
-            )}
             <div className='flex gap-[3px]'>
                 <div>
                     <div
@@ -103,12 +97,6 @@ const Signboard1 = () => {
                         >
                             Change Image
                         </label>
-                        {isPopImgOpen && (
-                            <PopImg
-                                onClose={closePopImg}
-                            />
-                        )}
-
                         <input
                             type='file'
                             id='imageUpload'

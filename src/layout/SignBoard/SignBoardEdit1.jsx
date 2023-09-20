@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import { BiChevronLeft } from 'react-icons/bi';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
-import Banner100x100 from '../../components/banner/banner1x1/banner100x100';
 import Banner100x100foto from '../../components/banner/banner1x1/banner100x100foto'; // 
 import Banner100x100qr from '../../components/banner/banner1x1/banner100x100qr';
 import Banner100x100lm from '../../components/banner/banner1x1/banner100x100lm';
