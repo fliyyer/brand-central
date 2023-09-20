@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import AllTools from './layout/AllTools/AllTools';
 import SaveDocuments from './pages/SaveDocuments';
-import SignBoardEdit from './layout/SignBoard/SignBoardEdit';
+import SignBoardEdit1 from './layout/SignBoard/SignBoardEdit1';
 import BannerEdit1x1 from './layout/Banner/BannerEdit1x1';
 import BannerEdit2x1 from './layout/Banner/BannerEdit2x1';
 import BannerEdit3x1 from './layout/Banner/BannerEdit3x1';
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     { path: '/profile', element: <Profile /> },
     { path: '/save-documents', element: <SaveDocuments /> },
     { path: 'all-tools', element: <AllTools /> },
-    { path: 'sign-board/edit', element: <SignBoardEdit /> },
+    { path: 'sign-board/edit1', element: <SignBoardEdit1 /> },
     { path: 'banner/edit/1x1', element: <BannerEdit1x1 /> },
     { path: 'banner/edit/2x1', element: <BannerEdit2x1 /> },
     { path: 'banner/edit/3x1', element: <BannerEdit3x1 /> },
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
     { path: 'envelope/edit/2', element: <EnvelopeEdit2 /> },
     { path: 'namecard/edit/1', element: <NamecardEdit1 /> },
     { path: 'namecard/edit/2', element: <NamecardEdit2 /> },
-    { path: 'namecard/edit/3', element: <NamecardEdit3 onBackButtonClick={(menuTitle) => setActiveMenu(menuTitle)} /> },
+    { path: 'namecard/edit/3', element: <NamecardEdit3 /> },
     { path: 'proposal/edit/1', element: <ProposalEdit /> },
 
 ]);

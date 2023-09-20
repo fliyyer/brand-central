@@ -8,9 +8,10 @@ import Banner100x100foto from '../../components/banner/banner1x1/banner100x100fo
 import Banner100x100qr from '../../components/banner/banner1x1/banner100x100qr';
 import Banner100x100lm from '../../components/banner/banner1x1/banner100x100lm';
 import Banner100x100qrlm from '../../components/banner/banner1x1/banner100x100qrlm';
+import Signboard1 from '../../components/signboard/signboard1/Signboard1';
 
-const BannerEdit1x1 = () => {
-    const [selectedComponent, setSelectedComponent] = useState('Banner100x100');
+const SignBoardEdit1 = () => {
+    const [selectedComponent, setSelectedComponent] = useState('Sign Board text only');
 
     const [zoom, setZoom] = useState(1);
     const handleZoomIn = () => {
@@ -26,8 +27,8 @@ const BannerEdit1x1 = () => {
 
     const renderSelectedComponent = () => {
         switch (selectedComponent) {
-            case 'Banner100x100':
-                return <Banner100x100 />;
+            case 'Sign Board text only':
+                return <Signboard1 />;
             case 'Banner100x100foto':
                 return <Banner100x100foto />;
             case 'Banner100x100qr':
@@ -60,7 +61,7 @@ const BannerEdit1x1 = () => {
                         onChange={(e) => setSelectedComponent(e.target.value)}
                         className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#fff] border-none w-full lg:w-auto"
                     >
-                        <option value="Banner100x100" className='bg-text-board-color'>Banner text only</option>
+                        <option value="Sign Board text only" className='bg-text-board-color'>Sign Board text only</option>
                         <option value="Banner100x100foto" className='bg-text-board-color rounded-none'>Banner with Photo</option>
                         <option value="Banner100x100qr" className='bg-text-board-color rounded-none'>Banner with QR</option>
                         <option value="Banner100x100lm" className='bg-text-board-color rounded-none'>Banner with Loan Market</option>
@@ -87,4 +88,4 @@ const BannerEdit1x1 = () => {
     );
 };
 
-export default BannerEdit1x1;
+export default SignBoardEdit1;

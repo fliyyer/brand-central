@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import { BiChevronLeft } from 'react-icons/bi';
-import Instagram2 from '../../components/socialmedia/instagram2';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
+import Instagram2 from '../../components/socialmedia/Instagram2';
 const SmEdit2 = () => {
     const [zoom, setZoom] = useState(1);
     const handleZoomIn = () => {

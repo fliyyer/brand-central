@@ -67,7 +67,7 @@ function Popup({ onClose }) {
                                     <h2 className="text-xs font-light">Location: {filteredListing[0].location}</h2>
                                 </div>
                             </div>
-                            <Link to='sign-board/edit'>
+                            <Link to='sign-board/edit1'>
                                 <button className="h-6 bg-primary-color w-full rounded text-[10px] text-[#3A3A3A]">Pilih</button></Link>
                         </div>
                     ) : (
