@@ -9,24 +9,13 @@ import { FaBath } from 'react-icons/fa6';
 import { FaCar } from 'react-icons/fa';
 import { BiSolidPhoneCall } from 'react-icons/bi'
 import { IoMdMail } from 'react-icons/io'
-import PopImg from '../../pop-up/PopImg';
-import { listingImages } from '../../../utils/ListingImg';
 
-const Signboard1 = () => {
-    const [bgImage, setBgImage] = useState(localStorage.getItem('sb_1_image1') || Sb1);
-    const [bgImage2, setBgImage2] = useState(localStorage.getItem('sb_1_image2') || Sb2);
-    const [bgImage3, setBgImage3] = useState(localStorage.getItem('sb_1_image3') || Sb3);
-    const [bgImage4, setBgImage4] = useState(localStorage.getItem('sb_1_image4') || Sb4);
-
+const Signboard1 = (props) => {
+    const [bgImage, setBgImage] = useState(Sb1)
+    const [bgImage2, setBgImage2] = useState(Sb2)
+    const [bgImage3, setBgImage3] = useState(Sb3)
+    const [bgImage4, setBgImage4] = useState(Sb4)
     const [isPopImgOpen, setIsPopImgOpen] = useState(false);
-    const openPopImg = () => {
-        setIsPopImgOpen(true);
-    };
-
-    const closePopImg = () => {
-        setIsPopImgOpen(false);
-    };
-
     const [content, setContent] = useState({
         bed: '2',
         bath: '2',
@@ -43,6 +32,15 @@ const Signboard1 = () => {
         wa: '081234567890',
         email: 'john.doe@raywhite.co.id'
     });
+
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
+
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
+    };
+
     const handleImageChange = (event, setImage, imageKey) => {
         const file = event.target.files[0];
         if (file) {
@@ -90,51 +88,41 @@ const Signboard1 = () => {
                         className='w-[202px] bg-slate-100 h-[200px] bg-cover bg-center bg-no-repeat relative'
                         style={{ backgroundImage: `url(${bgImage})` }}
                     >
-                        <label
+                        <button
                             htmlFor="imageUpload"
                             className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                            onClick={openPopImg}
+                            onClick={props.onClick}
+                            onChange={(e) => handleImageChange(e, props.setBgImage, 'bgImage')}
                         >
                             Change Image
-                        </label>
-                        <input
-                            type='file'
-                            id='imageUpload'
-                            accept='image/*'
-                            style={{ display: 'none' }}
-                            onChange={(e) => handleImageChange(e, setBgImage, 'sb_1_image1')}
-                        />
+                        </button>
                     </div>
                     <div className='flex mt-[2.3px] gap-[2px]'>
                         <div
                             className='w-[100px] bg-slate-100 h-[84px] bg-cover bg-center bg-no-repeat relative'
                             style={{ backgroundImage: `url(${bgImage2})` }}
                         >
-                            <label htmlFor='imageUpload2' className='border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                            <button
+                                htmlFor="imageUpload2"
+                                className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                                onClick={props.onClick}
+                                onChange={(e) => handleImageChange(e, setBgImage2)}
+                            >
                                 Change Image
-                            </label>
-                            <input
-                                type='file'
-                                id='imageUpload2'
-                                accept='image/*'
-                                style={{ display: 'none' }}
-                                onChange={(e) => handleImageChange(e, setBgImage2, 'sb_1_image2')}
-                            />
+                            </button>
                         </div>
                         <div
                             className='w-[100px] bg-slate-100 h-[84px] bg-cover bg-center bg-no-repeat relative'
                             style={{ backgroundImage: `url(${bgImage3})` }}
                         >
-                            <label htmlFor='imageUpload3' className='border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                            <button
+                                htmlFor="imageUpload3"
+                                className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                                onClick={props.onClick}
+                                onChange={(e) => handleImageChange(e, setBgImage3)}
+                            >
                                 Change Image
-                            </label>
-                            <input
-                                type='file'
-                                id='imageUpload3'
-                                accept='image/*'
-                                style={{ display: 'none' }}
-                                onChange={(e) => handleImageChange(e, setBgImage3, 'sb_1_image3')}
-                            />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -144,16 +132,14 @@ const Signboard1 = () => {
                         className='w-[109px] mt-[2.83px] bg-slate-100 h-[173px] bg-cover bg-center bg-no-repeat relative'
                         style={{ backgroundImage: `url(${bgImage4})` }}
                     >
-                        <label htmlFor='imageUpload4' className='border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                        <button
+                            htmlFor="imageUpload2"
+                            className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                            onClick={props.onClick}
+                            onChange={(e) => handleImageChange(e, setBgImage4)}
+                        >
                             Change Image
-                        </label>
-                        <input
-                            type='file'
-                            id='imageUpload4'
-                            accept='image/*'
-                            style={{ display: 'none' }}
-                            onChange={(e) => handleImageChange(e, setBgImage4, 'sb_1_image4')}
-                        />
+                        </button>
                     </div>
                 </div>
             </div>

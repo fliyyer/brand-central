@@ -23,32 +23,32 @@ const SavedLayout = () => {
     };
 
     return (
-        <div>
+        <div className=''>
             <div className='mt-11'>
-                <h1 className='text-white text-[22px] font-inter font-semibold'>Saved Document</h1>
+                <h1 className='text-white text-[18px] md:text-[22px] font-inter font-semibold'>Saved Document</h1>
             </div>
             <div className='mt-8'>
                 {displayedData.map((data) => (
                     <HistoryDocument key={data.id} title={data.title} />
                 ))}
             </div>
-            <div className="flex justify-center py-8">
+            <div className="flex justify-center py-4 md:py-8">
                 <button
                     onClick={prevPage}
                     className="text-white flex items-center font-inter font-bold text-sm space-x-2"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" viewBox="0 0 26 24" fill="none">
-                        <path d="M16.2426 6.3439L14.8284 4.92969L7.75732 12.0007L14.8284 19.0718L16.2426 17.6576L10.5857 12.0007L16.2426 6.3439Z" fill="white" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                        <path d="M11.9999 3.58594L10.5857 2.17173L3.51465 9.24278L10.5857 16.3138L11.9999 14.8996L7.34308 9.24278L11.9999 3.58594Z" fill="white" />
                     </svg>
-                    <h1>Sebelumnya</h1>
+                    <h1 className='text-xs md:text-sm'>Sebelumnya</h1>
                 </button>
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentPage(index + 1)}
-                        className={`mx-2 w-8 h-8 rounded-lg ${currentPage === index + 1
-                            ? 'bg-primary-color text-text-board-color text-sm font-bold'
-                            : ' text-white'
+                        className={`mx-1 md:mx-2 w-6 h-6 md:w-8 md:h-8 rounded-lg ${currentPage === index + 1
+                            ? 'bg-primary-color text-text-board-color text-xs md:text-sm font-bold'
+                            : ' text-white text-xs md:text-sm'
                             }`}
                     >
                         {index + 1}
@@ -58,13 +58,14 @@ const SavedLayout = () => {
                     onClick={nextPage}
                     className="text-white flex items-center font-inter font-bold text-sm space-x-2"
                 >
-                    <h1>Selanjutnya</h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" viewBox="0 0 26 24" fill="none">
-                        <path d="M10.5857 6.3439L11.9999 4.92969L19.071 12.0008L11.9999 19.0718L10.5857 17.6576L16.2425 12.0008L10.5857 6.3439Z" fill="white" />
+                    <h1 className='text-xs md:text-sm'>Selanjutnya</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+                        <path d="M6.00008 3.58594L7.41429 2.17173L14.4853 9.24278L7.41429 16.3138L6.00008 14.8996L10.6569 9.24278L6.00008 3.58594Z" fill="white" />
                     </svg>
                 </button>
             </div>
         </div>
+
     );
 };
 

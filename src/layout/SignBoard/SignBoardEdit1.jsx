@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import { BiChevronLeft } from 'react-icons/bi';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
-import Banner100x100foto from '../../components/banner/banner1x1/banner100x100foto'; // 
-import Banner100x100qr from '../../components/banner/banner1x1/banner100x100qr';
-import Banner100x100lm from '../../components/banner/banner1x1/banner100x100lm';
-import Banner100x100qrlm from '../../components/banner/banner1x1/banner100x100qrlm';
 import Signboard1 from '../../components/signboard/signboard1/Signboard1';
+import PopImg from '../../components/pop-up/PopImg';
+import { listingImages } from '../../utils/ListingImg';
+import Signboard1qr from '../../components/signboard/signboard1/Signboard1qr';
+import Signboard1lm from '../../components/signboard/signboard1/Signboarad1lm';
+import Signboard1qrlm from '../../components/signboard/signboard1/Signboard1qrlm';
 
 const SignBoardEdit1 = () => {
     const [selectedComponent, setSelectedComponent] = useState('Sign Board text only');
-
     const [zoom, setZoom] = useState(1);
+    const [bgImage, setBgImage] = useState('')
     const handleZoomIn = () => {
         setZoom(Math.min(zoom + 0.1, 1.3));
     };
@@ -27,44 +28,63 @@ const SignBoardEdit1 = () => {
     const renderSelectedComponent = () => {
         switch (selectedComponent) {
             case 'Sign Board text only':
-                return <Signboard1 />;
-            case 'Banner100x100foto':
-                return <Banner100x100foto />;
-            case 'Banner100x100qr':
-                return <Banner100x100qr />;
-            case 'Banner100x100lm':
-                return <Banner100x100lm />;
-            case 'Banner100x100qrlm':
-                return <Banner100x100qrlm />;
+                return <Signboard1 onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />;
+            case 'Sign Board QR':
+                return <Signboard1qr onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />;
+            case 'Sign Board Loan Market':
+                return <Signboard1lm onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />;
+            case 'Sign Board Qr with Loan Market':
+                return <Signboard1qrlm onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />;
             default:
                 return null;
         }
     };
 
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
+
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
+    };
+
+
     return (
         <div className='min-h-screen'>
-            <nav className='flex flex-col lg:flex-row justify-between px-6 lg:px-24 items-center lg:h-[100px]' style={{ backgroundColor: '#3F4447', boxShadow: '0px 5px 20px 0px rgba(0, 0, 0, 0.10)' }}>
-                <img src={BrandCentral} alt="Brand Central" className="mb-4 lg:mb-0" />
-                <button className='px-6 w-[178px] h-[40px] text-primary-color rounded-[100px] border border-primary-color mt-4 lg:mt-0'>Save Project</button>
+            <div>
+                {isPopImgOpen && (
+                    <PopImg
+                        onClose={closePopImg}
+                        images={listingImages}
+                        onChooseImage={(selectedImage) => {
+                            console.log('Selected Image:', selectedImage);
+                            closePopImg();
+                        }}
+                    />
+                )}
+            </div>
+            <nav className='flex justify-between px-6 lg:px-24 py-5 items-center' style={{ backgroundColor: '#3F4447', boxShadow: '0px 5px 20px 0px rgba(0, 0, 0, 0.10)' }}>
+                <img src={BrandCentral} alt="Brand Central" className="w-40 md:w-auto" />
+                <button className='px-4 md:px-6 w-28 md:w-[178px] h-7 md:h-[40px] text-primary-color text-sm md:text-base rounded-[100px] border border-primary-color'>Save Project</button>
             </nav>
             <div className='bg-dark  px-6 lg:px-28 py-7 w-full min-h-screen flex flex-col justify-start items-center'>
                 <Link to='/'>
-                    <button className='text-[#fff] font-roboto absolute top-8 lg:top-36 left-4 lg:left-28 flex items-center gap-2 font-medium py-1 border rounded-[100px] border-[#fff] border-solid border-1 px-3'>
+                    <button className='text-[#fff] font-roboto absolute top-30 md:top-8 lg:top-36 left-6 lg:left-28 flex items-center gap-2 font-medium py-1 border rounded-[100px] border-[#fff] border-solid border-1 px-3'>
                         <BiChevronLeft className='w-8 h-8' />
                         <p>Back</p>
                     </button>
                 </Link>
-                <div className='my-auto' style={zoomStyle}>
+                <div className='my-16 ' style={zoomStyle}>
                     <select
                         value={selectedComponent}
                         onChange={(e) => setSelectedComponent(e.target.value)}
                         className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#fff] border-none w-full lg:w-auto"
                     >
                         <option value="Sign Board text only" className='bg-text-board-color'>Sign Board text only</option>
-                        <option value="Banner100x100foto" className='bg-text-board-color rounded-none'>Banner with Photo</option>
-                        <option value="Banner100x100qr" className='bg-text-board-color rounded-none'>Banner with QR</option>
-                        <option value="Banner100x100lm" className='bg-text-board-color rounded-none'>Banner with Loan Market</option>
-                        <option value="Banner100x100qrlm" className='bg-text-board-color rounded-none'>Banner QR with Loan Market</option>
+                        <option value="Sign Board QR" className='bg-text-board-color rounded-none'>Sign Board Qr</option>
+                        <option value="Sign Board Loan Market" className='bg-text-board-color rounded-none'>Sign Board Loan Market</option>
+                        <option value="Sign Board Qr with Loan Market" className='bg-text-board-color rounded-none'>Sign Board Qr with Loan Market</option>
                     </select>
                     {renderSelectedComponent()}
                 </div>

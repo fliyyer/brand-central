@@ -3,9 +3,9 @@ import ImgPopup from '../../assets/images/img-popup.png'
 import FindHome from '../../assets/images/find-id.png'
 import { AiOutlineSearch, AiOutlineCloseCircle } from 'react-icons/ai'
 import { Link } from "react-router-dom";
-import { filterId, searchByListing } from "../../utils/ListingId";
+import { searchByListing } from "../../utils/ListingId";
 
-function Popup({ onClose }) {
+function Popup({ onClose, to }) {
     const [filterIdInput, setFilterIdInput] = useState("");
     const [filteredListing, setFilteredListing] = useState([]);
     const [showImage, setShowImage] = useState(false);
@@ -28,9 +28,9 @@ function Popup({ onClose }) {
     };
 
     return (
-        <div className="fixed font-inter top-0 left-0 right-0 bottom-0 flex justify-center items-center z-50 bg-black bg-opacity-50">
+        <div className="fixed font-inter top-0 left-0 right-0 bottom-0 flex justify-center items-center px-11 z-50 bg-black bg-opacity-50">
             <div className="bg-[#3F4447] rounded-[20px] w-[796px] h-[535px] flex gap-11 justify-center items-center relative">
-                <div className="w-1/2 px-5">
+                <div className="w-full md:w-1/2 px-5">
                     <button
                         className="text-white rounded-full absolute top-4 left-4 items-center z-10"
                         onClick={handleClose}
@@ -67,14 +67,15 @@ function Popup({ onClose }) {
                                     <h2 className="text-xs font-light">Location: {filteredListing[0].location}</h2>
                                 </div>
                             </div>
-                            <Link to='sign-board/edit1'>
-                                <button className="h-6 bg-primary-color w-full rounded text-[10px] text-[#3A3A3A]">Pilih</button></Link>
+                            <Link to={to}>
+                                <button className="h-6 bg-primary-color w-full rounded text-[10px] text-[#3A3A3A]">Pilih</button>
+                            </Link>
                         </div>
                     ) : (
                         <img src={FindHome} alt="Property Finder" className="w-full h-auto" />
                     )}
                 </div>
-                <img src={ImgPopup} alt="Image Popup" className="w-1/2 h-auto" />
+                <img src={ImgPopup} alt="Image Popup" className="hidden md:block w-1/2 h-auto" />
             </div>
         </div>
     );

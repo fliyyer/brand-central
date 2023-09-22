@@ -36,10 +36,10 @@ const ProfileHeader = () => {
     };
 
     return (
-        <div className='mt-11'>
+        <div className='mt-11 px-7 md:px-0'>
             <h1 className='text-white text-[22px] font-inter font-semibold'>Your Profile</h1>
-            <div className='flex gap-4 mt-7 justify-between items-center'>
-                <div className="relative w-[104px] h-[104px] rounded-full overflow-hidden mb-2">
+            <div className='flex  md:gap-4 mt-7 gap-14 md:justify-between items-center'>
+                <div className="md:relative  w-24 h-24 md:w-[104px] md:h-[104px] rounded-full overflow-hidden mb-2">
                     <label htmlFor="file-input" className="w-full h-full bg-gray-200 flex items-center justify-center cursor-pointer">
                         {profileImage ? (
                             <img
@@ -61,10 +61,10 @@ const ProfileHeader = () => {
                     </label>
                 </div>
                 <div className="flex font-roboto flex-col">
-                    <button className="text-white font-medium text-sm py-2 px-4 w-[378px] border border-white rounded-full" onClick={handleImageUploadClick}>
+                    <button className="text-white font-medium text-sm py-2 px-4 w-52 md:w-[378px] border border-white rounded-full" onClick={handleImageUploadClick}>
                         Change Photo
                     </button>
-                    <button className="text-white font-medium text-sm py-2 px-4 w-[378px] mt-3 border border-white rounded-full" onClick={handleImageRemove}>
+                    <button className="text-white font-medium text-sm py-2 px-4  w-52 md:w-[378px] mt-3 border border-white rounded-full" onClick={handleImageRemove}>
                         Remove Photo
                     </button>
                 </div>
@@ -95,7 +95,7 @@ const ProfileHeader = () => {
                 <p className='max-w-[511px] text-base mt-2 font-light'>Choose how you’d like to appear. Select a theme, or sync themes with your system preferences.</p>
                 <div className="flex gap-[30px] mt-7">
                     <div
-                        className={`w-[246px] rounded-[20px] h-[181px] cursor-pointer flex justify-center items-center text-text-board-color ${activeMode === "light" ? "border-2 border-primary-color" : ""
+                        className={`w-40 h-32 md:w-[246px]  rounded-[20px] md:h-[181px] cursor-pointer flex justify-center items-center text-text-board-color ${activeMode === "light" ? "border-2 border-primary-color" : ""
                             }`}
                         style={{ backgroundColor: "#D9D9D9" }}
                         onClick={() => handleModeClick("light")}
@@ -103,7 +103,7 @@ const ProfileHeader = () => {
                         Light Mode
                     </div>
                     <div
-                        className={`w-[246px] rounded-[20px] cursor-pointer h-[181px] flex justify-center items-center text-white ${activeMode === "dark" ? "border-2 border-primary-color" : ""
+                        className={`w-40 h-32 md:w-[246px]  rounded-[20px] md:h-[181px] flex justify-center items-center text-white ${activeMode === "dark" ? "border-2 border-primary-color" : ""
                             }`}
                         style={{ backgroundColor: "#524D4D" }}
                         onClick={() => handleModeClick("dark")}

@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Ig3 from '../../assets/images/instagram/ig3.jpeg';
 
-const Instagram5 = () => {
+const Instagram5 = (props) => {
     const [bgImage, setBgImage] = useState(localStorage.getItem('instagram_5_image1') || Ig3);
-
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
     const [content, setContent] = useState({
         descripsion: 'Nisl consectetur curabitur placerat aliquet ut ornare.',
         ut: 'Ut',
         et: 'et?',
     });
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
+
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
     };
 
     const handleEditAndSave = (field, e) => {
@@ -45,16 +40,9 @@ const Instagram5 = () => {
                 className='w-[479px] bg-slate-100 h-[328px] bg-cover bg-no-repeat relative'
                 style={{ backgroundImage: `url(${bgImage})` }}
             >
-                <label htmlFor='imageUpload' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                <button onClick={props.onClick} htmlFor='imageUpload' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                     Change Image
-                </label>
-                <input
-                    type='file'
-                    id='imageUpload'
-                    accept='image/*'
-                    style={{ display: 'none' }}
-                    onChange={(e) => handleImageChange(e, setBgImage, 'instagram_5_image1')}
-                />
+                </button>
             </div>
             <div className='mt-[14px] text-center px-10 gap-[14px]'>
                 <div className='font-poppins'>

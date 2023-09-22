@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Ig5 from "../../assets/images/instagram/Ig5.jpeg";
 import Rwtext from "../../assets/images/rw-text.png";
-const Instagram10 = () => {
+const Instagram10 = (props) => {
     const [bgImage, setBgImage] = useState(
         localStorage.getItem("instagram_10_image1") || Ig5
     );
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
 
     const [content, setContent] = useState({
         title: "Nibh cras lacus orci at.",
         descripsion: "Diam interdum lacinia sed risus ultrices egestas lectus suspendisse. Morbi felis",
     });
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
+
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
     };
 
     const handleEditAndSave = (field, e) => {
@@ -47,21 +43,12 @@ const Instagram10 = () => {
                     className="w-[297px] bg-slate-100 h-full bg-cover bg-no-repeat bg-center relative"
                     style={{ backgroundImage: `url(${bgImage})` }}
                 >
-                    <label
+                    <button onClick={props.onClick}
                         htmlFor="imageUpload"
                         className="border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                     >
                         Change Image
-                    </label>
-                    <input
-                        type="file"
-                        id="imageUpload"
-                        accept="image/*"
-                        style={{ display: "none" }}
-                        onChange={(e) =>
-                            handleImageChange(e, setBgImage, "instagram_10_image1")
-                        }
-                    />
+                    </button>
                     <p className="text-[#616161] text-center bottom-0 absolute  w-full py-[6px] font-light">
                         PROUDLY <span className="font-bold">RAYWHITE</span>
                     </p>

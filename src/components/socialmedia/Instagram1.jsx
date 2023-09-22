@@ -3,30 +3,25 @@ import Ig1 from '../../assets/images/instagram/ig1.jpeg';
 import Ig2 from '../../assets/images/instagram/ig2.jpeg';
 import Ig3 from '../../assets/images/instagram/ig3.jpeg';
 
-const Instagram1 = () => {
+const Instagram1 = (props) => {
     const [bgImage, setBgImage] = useState(localStorage.getItem('instagram_1_image') || Ig1);
     const [bgImage2, setBgImage2] = useState(localStorage.getItem('instagram_2_image') || Ig2);
     const [bgImage3, setBgImage3] = useState(localStorage.getItem('instagram_3_image') || Ig3);
-
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
     const [content, setContent] = useState({
         title: 'JUST LISTED.',
         descripsion: 'sometimes it’s best not to wait.',
         why: 'why',
         wait: 'wait?',
     });
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
+
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
     };
 
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
+    };
     const handleEditAndSave = (field, e) => {
         if (e.key === 'Enter') {
             setContent((prevContent) => ({
@@ -57,31 +52,18 @@ const Instagram1 = () => {
                     className='w-[215px] bg-slate-100 h-[215px] bg-cover bg-center bg-no-repeat relative'
                     style={{ backgroundImage: `url(${bgImage})` }}
                 >
-                    <label htmlFor='imageUpload' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                    <button onClick={props.onClick} htmlFor='imageUpload' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                         Change Image
-                    </label>
-                    <input
-                        type='file'
-                        id='imageUpload'
-                        accept='image/*'
-                        style={{ display: 'none' }}
-                        onChange={(e) => handleImageChange(e, setBgImage, 'instagram_1_image')}
-                    />
+                    </button>
+
                 </div>
                 <div
                     className='w-[215px] bg-slate-100 h-[215px] bg-center bg-cover bg-no-repeat relative'
                     style={{ backgroundImage: `url(${bgImage2})` }}
                 >
-                    <label htmlFor='imageUpload2' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                    <button onClick={props.onClick} htmlFor='imageUpload2' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                         Change Image
-                    </label>
-                    <input
-                        type='file'
-                        id='imageUpload2'
-                        accept='image/*'
-                        style={{ display: 'none' }}
-                        onChange={(e) => handleImageChange(e, setBgImage2, 'instagram_2_image')}
-                    />
+                    </button>
                 </div>
             </div>
             <div className='flex mt-[14px] gap-[14px]'>
@@ -98,16 +80,9 @@ const Instagram1 = () => {
                     className='w-[215px] bg-slate-100 h-[215px] bg-cover bg-center bg-no-repeat relative'
                     style={{ backgroundImage: `url(${bgImage3})` }}
                 >
-                    <label htmlFor='imageUpload3' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                    <button onClick={props.onClick} htmlFor='imageUpload3' className='border text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                         Change Image
-                    </label>
-                    <input
-                        type='file'
-                        id='imageUpload3'
-                        accept='image/*'
-                        style={{ display: 'none' }}
-                        onChange={(e) => handleImageChange(e, setBgImage3, 'instagram_3_image')}
-                    />
+                    </button>
                 </div>
             </div>
         </div>

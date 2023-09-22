@@ -2,24 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Ig5 from '../../assets/images/instagram/Ig5.jpeg';
 import Raywhite from '../../assets/images/raywhite-kuning.png';
 
-const Instagram9 = () => {
+const Instagram9 = (props) => {
     const [bgImage, setBgImage] = useState(localStorage.getItem('instagram_9_image1') || Ig5);
-
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
     const [content, setContent] = useState({
         title: 'Nibh cras lacus orci at eu.',
         description: 'Diam interdum lacinia sed risus ultrices egestas lectus suspendisse. Morbi felis'
     });
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
+
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
     };
 
     const handleEditAndSave = (field, e) => {
@@ -54,16 +49,9 @@ const Instagram9 = () => {
                 className='w-[479px] bg-slate-100 h-[372px] bg-cover bg-center bg-no-repeat left-0 absolute bottom-0'
                 style={{ backgroundImage: `url(${bgImage})` }}
             >
-                <label htmlFor='imageUpload' className='border absolute text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                <button onClick={props.onClick} htmlFor='imageUpload' className='border absolute text-center text-xs font-roboto w-[120px] py-[6.75px] border-[#fff] rounded-[57px] text-[#fff] font-medium z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                     Change Image
-                </label>
-                <input
-                    type='file'
-                    id='imageUpload'
-                    accept='image/*'
-                    style={{ display: 'none' }}
-                    onChange={(e) => handleImageChange(e, setBgImage, 'instagram_9_image1')}
-                />
+                </button>
             </div>
             <p className='text-[#616161] text-center w-full font-light absolute '>PROUDLY <span className='font-bold'>RAYWHITE</span></p>
         </div>
