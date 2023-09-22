@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Ig4 from '../../assets/images/instagram/Ig4.jpeg';
+import Ig4 from '../../assets/images/instagram/ig4.jpeg';
 
 const Instagram7 = (props) => {
     const [bgImage, setBgImage] = useState(localStorage.getItem('instagram_7_image1') || Ig4);
