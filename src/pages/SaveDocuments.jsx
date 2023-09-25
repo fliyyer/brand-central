@@ -7,8 +7,7 @@ import SavedLayout from '../layout/SavedDocuments/SavedLayout'
 function SaveDocuments() {
 
     return (
-        <div className='w-full min-h-screen bg-cover'
-            style={{ backgroundImage: `url(${bgDark})` }}>
+        <div className='w-full min-h-screen bg-cover bg-dark'>
             <div>
                 <Navbar />
                 <div className='flex justify-center items-center'>

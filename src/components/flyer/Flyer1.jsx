@@ -12,7 +12,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { PiTiktokLogoLight } from 'react-icons/pi'
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { TbWorldWww } from 'react-icons/tb'
-const Flyer1 = () => {
+const Flyer1 = (props) => {
     const [bgImage, setBgImage] = useState(localStorage.getItem('flyer_1_image1') || Flyr1);
     const [bgImage2, setBgImage2] = useState(localStorage.getItem('flyer_1_image2') || Flyr2);
     const [bgImage3, setBgImage3] = useState(localStorage.getItem('flyer_1_image3') || Flyr3);
@@ -25,17 +25,13 @@ const Flyer1 = () => {
         bath: '0 + 0 Bathroooms',
 
     });
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
+
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
     };
 
     const handleEditAndSave = (field, e) => {
@@ -75,44 +71,26 @@ const Flyer1 = () => {
                     className='w-[146px] h-[240px] bg-cover bg-center bg-no-repeat relative'
                     style={{ backgroundImage: `url(${bgImage})` }}
                 >
-                    <label htmlFor='imageUpload' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                    <button onClick={props.onClick} htmlFor='imageUpload' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                         Change Image
-                    </label>
-                    <input
-                        type='file'
-                        id='imageUpload'
-                        accept='image/*'
-                        style={{ display: 'none' }}
-                        onChange={(e) => handleImageChange(e, setBgImage, 'flyer_1_image1')} />
+                    </button>
                 </div>
                 <div>
                     <div
                         className='w-[161px] h-[104px] bg-cover bg-center bg-no-repeat relative'
                         style={{ backgroundImage: `url(${bgImage2})` }}
                     >
-                        <label htmlFor='imageUpload2' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                        <button onClick={props.onClick} htmlFor='imageUpload2' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                             Change Image
-                        </label>
-                        <input
-                            type='file'
-                            id='imageUpload2'
-                            accept='image/*'
-                            style={{ display: 'none' }}
-                            onChange={(e) => handleImageChange(e, setBgImage2, 'flyer_1_image2')} />
+                        </button>
                     </div>
                     <div
                         className='w-[161px] h-[130px] mt-[6px] bg-cover bg-center bg-no-repeat relative'
                         style={{ backgroundImage: `url(${bgImage3})` }}
                     >
-                        <label htmlFor='imageUpload3' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                        <button onClick={props.onClick} htmlFor='imageUpload3' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                             Change Image
-                        </label>
-                        <input
-                            type='file'
-                            id='imageUpload3'
-                            accept='image/*'
-                            style={{ display: 'none' }}
-                            onChange={(e) => handleImageChange(e, setBgImage3, 'flyer_1_image3')} />
+                        </button>
                     </div>
                 </div>
             </div>

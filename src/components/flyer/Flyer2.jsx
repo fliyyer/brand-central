@@ -13,7 +13,7 @@ import { BsFillTelephoneFill } from 'react-icons/bs';
 import { TbWorldWww } from 'react-icons/tb';
 import Pentagon from '../../assets/images/pentagon.png';
 import dotsyllow from '../../assets/images/dotsyllow 1.png'
-const Flyer2 = () => {
+const Flyer2 = (props) => {
     const [bgImage, setBgImage] = useState(localStorage.getItem('flyer_2_image1') || Flyr1);
     const [bgImage2, setBgImage2] = useState(localStorage.getItem('flyer_2_image2') || Flyr2);
     const [bgImage3, setBgImage3] = useState(localStorage.getItem('flyer_2_image3') || Flyr3);
@@ -26,19 +26,14 @@ const Flyer2 = () => {
         bath: '0 + 0 Bathroooms',
 
     });
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
     };
 
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
+    };
     const handleEditAndSave = (field, e) => {
         if (e.key === 'Enter') {
             setContent((prevContent) => ({
@@ -85,19 +80,12 @@ const Flyer2 = () => {
                     className='w-[184px] h-[337px] bg-cover bg-center bg-no-repeat relative'
                     style={{ backgroundImage: `url(${bgImage})` }}
                 >
-                    <label
+                    <button onClick={props.onClick}
                         htmlFor='imageUpload'
                         className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'
                     >
                         Change Image
-                    </label>
-                    <input
-                        type='file'
-                        id='imageUpload'
-                        accept='image/*'
-                        style={{ display: 'none' }}
-                        onChange={(e) => handleImageChange(e, setBgImage, 'flyer_2_image1')}
-                    />
+                    </button>
                 </div>
 
                 <div>
@@ -105,29 +93,17 @@ const Flyer2 = () => {
                         className='w-[168px] h-[164px] bg-cover bg-center bg-no-repeat relative'
                         style={{ backgroundImage: `url(${bgImage2})` }}
                     >
-                        <label htmlFor='imageUpload2' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                        <button onClick={props.onClick} htmlFor='imageUpload2' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                             Change Image
-                        </label>
-                        <input
-                            type='file'
-                            id='imageUpload2'
-                            accept='image/*'
-                            style={{ display: 'none' }}
-                            onChange={(e) => handleImageChange(e, setBgImage2, 'flyer_2_image2')} />
+                        </button>
                     </div>
                     <div
                         className='w-[168px] h-[164px] mt-[6px] bg-cover bg-center bg-no-repeat relative'
                         style={{ backgroundImage: `url(${bgImage3})` }}
                     >
-                        <label htmlFor='imageUpload3' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+                        <button onClick={props.onClick} htmlFor='imageUpload3' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                             Change Image
-                        </label>
-                        <input
-                            type='file'
-                            id='imageUpload3'
-                            accept='image/*'
-                            style={{ display: 'none' }}
-                            onChange={(e) => handleImageChange(e, setBgImage3, 'flyer_2_image3')} />
+                        </button>
                     </div>
                 </div>
             </div>

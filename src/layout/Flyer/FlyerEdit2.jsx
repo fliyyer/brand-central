@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import { BiChevronLeft } from 'react-icons/bi';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
-import Flyer1 from '../../components/flyer/Flyer1';
 import Flyer2 from '../../components/flyer/Flyer2';
+import PopImg from '../../components/pop-up/PopImg';
+import { listingImages } from '../../utils/ListingImg';
 
 const FlyerEdit2 = () => {
     const [zoom, setZoom] = useState(1);
+    const [bgImage, setBgImage] = useState('')
+    const setZoomByScreenWidth = () => {
+        if (window.innerWidth <= 760) {
+            setZoom(0.8);
+        } else {
+            setZoom(1.0);
+        }
+    };
+
+    useEffect(() => {
+        setZoomByScreenWidth();
+        window.addEventListener('resize', setZoomByScreenWidth);
+        return () => {
+            window.removeEventListener('resize', setZoomByScreenWidth);
+        };
+    }, []);
     const handleZoomIn = () => {
         setZoom(Math.min(zoom + 0.1, 1.3));
     };
@@ -18,22 +35,42 @@ const FlyerEdit2 = () => {
         transform: `scale(${zoom})`,
         transformOrigin: 'center center',
     }
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
+
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
+    };
 
     return (
         <div className='min-h-screen'>
-            <nav className='flex flex-col lg:flex-row justify-between px-6 lg:px-24 items-center lg:h-[100px]' style={{ backgroundColor: '#3F4447', boxShadow: '0px 5px 20px 0px rgba(0, 0, 0, 0.10)' }}>
-                <img src={BrandCentral} alt="Brand Central" className="mb-4 lg:mb-0" />
-                <button className='px-6 w-[178px] max-w-full h-[40px] text-primary-color rounded-[100px] border border-primary-color mt-4 lg:mt-0'>Save Project</button>
+            <div>
+                {isPopImgOpen && (
+                    <PopImg
+                        onClose={closePopImg}
+                        images={listingImages}
+                        onChooseImage={(selectedImage) => {
+                            console.log('Selected Image:', selectedImage);
+                            closePopImg();
+                        }}
+                    />
+                )}
+            </div>
+            <nav className='flex justify-between px-6 lg:px-24 py-5 md:py-9 items-center' style={{ backgroundColor: '#3F4447', boxShadow: '0px 5px 20px 0px rgba(0, 0, 0, 0.10)' }}>
+                <img src={BrandCentral} alt="Brand Central" className="w-40 md:w-auto" />
+                <button className='px-4 md:px-6 w-28 md:w-[178px] h-7 md:h-[40px] text-primary-color text-sm md:text-base rounded-[100px] border border-primary-color'>Save Project</button>
             </nav>
             <div className='bg-dark px-6 lg:px-28 w-full min-h-screen flex flex-col justify-start items-center'>
                 <Link to='/'>
-                    <button className='text-[#fff] font-roboto relative -left-[589px] top-10  flex items-center gap-2 font-medium py-1 border rounded-[100px] border-[#fff] border-solid border-1 px-3'>
+                    <button className='text-[#fff] font-roboto absolute top-32 md:top-36 left-6 lg:left-28 flex items-center gap-2 font-medium py-1 border rounded-[100px] border-[#fff] border-solid border-1 px-3'>
                         <BiChevronLeft className='w-8 h-8' />
                         <p>Back</p>
                     </button>
                 </Link>
-                <div className='my-auto' style={zoomStyle}>
-                    <Flyer2 />
+                <div className='my-16' style={zoomStyle}>
+                    <Flyer2 onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />
                 </div>
                 <div className='mb-4 flex items-center justify-center'>
                     <button onClick={handleZoomOut} className="text-sm w-[15px] bg-transparent py-10 text-white">

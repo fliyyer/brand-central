@@ -5,7 +5,7 @@ import Contents from '../layout/Home/Contents'
 
 const Home = () => {
     return (
-        <div className='w-full min-h-screen bg-cover bg-dark'>
+        <div className='w-full min-h-screen bg-cover bg-dark dark:bg-white'>
             <Navbar />
             <Header />
             <Contents />

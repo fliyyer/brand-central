@@ -64,13 +64,13 @@ const SignBoardEdit1 = () => {
                     />
                 )}
             </div>
-            <nav className='flex justify-between px-6 lg:px-24 py-5 items-center' style={{ backgroundColor: '#3F4447', boxShadow: '0px 5px 20px 0px rgba(0, 0, 0, 0.10)' }}>
+            <nav className='flex justify-between px-6 lg:px-24 md:py-9 py-5 items-center' style={{ backgroundColor: '#3F4447', boxShadow: '0px 5px 20px 0px rgba(0, 0, 0, 0.10)' }}>
                 <img src={BrandCentral} alt="Brand Central" className="w-40 md:w-auto" />
                 <button className='px-4 md:px-6 w-28 md:w-[178px] h-7 md:h-[40px] text-primary-color text-sm md:text-base rounded-[100px] border border-primary-color'>Save Project</button>
             </nav>
             <div className='bg-dark  px-6 lg:px-28 py-7 w-full min-h-screen flex flex-col justify-start items-center'>
                 <Link to='/'>
-                    <button className='text-[#fff] font-roboto absolute top-30 md:top-8 lg:top-36 left-6 lg:left-28 flex items-center gap-2 font-medium py-1 border rounded-[100px] border-[#fff] border-solid border-1 px-3'>
+                    <button className='text-[#fff] font-roboto absolute top-30 md:top-28 lg:top-36 left-6 lg:left-28 flex items-center gap-2 font-medium py-1 border rounded-[100px] border-[#fff] border-solid border-1 px-3'>
                         <BiChevronLeft className='w-8 h-8' />
                         <p>Back</p>
                     </button>
@@ -95,7 +95,7 @@ const SignBoardEdit1 = () => {
                     <div className="w-40 h-1 bg-slate-600 rounded-full mx-4">
                         <div
                             className="h-1 bg-[#fff] rounded-full"
-                            style={{ width: `${zoom * 50}%` }}
+                            style={{ width: `${zoom * 80}%` }}
                         ></div>
                     </div>
                     <button onClick={handleZoomIn} className="text-sm w-[15px] bg-transparent text-white">

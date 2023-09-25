@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../../Button';
 import { HiEyeOff, HiEye } from 'react-icons/hi'
+import { Link } from 'react-router-dom';
 
 const InputLogin = () => {
     const [email, setEmail] = useState('');
@@ -67,7 +68,7 @@ const InputLogin = () => {
                     <button className='bg-primary-color rounded-[90px] w-full py-4 text-typo-color font-medium text-md px-3'>Log In</button>
                     <div className='flex items-center justify-center mt-[27px]'>
                         <hr className='flex-grow border-t-1 border-gray-300' />
-                        <p className='px-2 text-gray-400'>Forgot Password</p>
+                        <Link to='/forgot-password' className='px-2 text-gray-400'>Forgot Password</Link>
                         <hr className='flex-grow border-t-1 border-gray-300' />
                     </div>
                 </div>

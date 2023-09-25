@@ -7,7 +7,7 @@ import { BiSolidBath, BiSolidCar } from 'react-icons/bi'
 import Loca from '../../assets/images/u&t.png'
 import Service from '../../assets/images/service.png'
 
-const Flyer3 = () => {
+const Flyer3 = (props) => {
     const [bgImage, setBgImage] = useState(localStorage.getItem('flyer_3_image1') || Flyr1);
     const [content, setContent] = useState({
         location: 'Utara & Timur',
@@ -30,18 +30,13 @@ const Flyer3 = () => {
         no: '(021) 0000000'
 
     });
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const openPopImg = () => {
+        setIsPopImgOpen(true);
+    };
 
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
     };
 
     const handleEditAndSave = (field, e) => {
@@ -73,16 +68,9 @@ const Flyer3 = () => {
                 </div>
                 <img className='w-[47px] h-[47px] fixed right-7' src={Rw} alt="Ray White" />
             </div>
-            <label htmlFor='imageUpload' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
+            <button onClick={props.onClick} htmlFor='imageUpload' className='border text-center text-[8px] font-roboto w-[81px] py-1 border-[#fff] rounded-[57px] text-[#fff] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer'>
                 Change Image
-            </label>
-            <input
-                type='file'
-                id='imageUpload'
-                accept='image/*'
-                style={{ display: 'none' }}
-                onChange={(e) => handleImageChange(e, setBgImage, 'flyer_3_image1')}
-            />
+            </button>
             <div className='flex px-7 gap-[22px] absolute bottom-32'>
                 <div className='font-poppins  text-[#fff]'>
                     <h1 className='text-[17.px] font-extrabold tracking-[1.7px] uppercase' contentEditable={true} onBlur={(e) => handleEditAndSave('title', e)} suppressContentEditableWarning={true}>{content.title}</h1>

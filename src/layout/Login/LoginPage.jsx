@@ -1,5 +1,4 @@
 import React from 'react';
-import bgDark from '../../assets/images/bg-dark.png';
 import InputLogin from '../../components/input/Login/inputLogin';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import RayWhite from '../../assets/images/logo-ray-white.png';

@@ -61,26 +61,7 @@ export default function Navbar() {
         zIndex: 10,
     };
 
-    const notificationDropdownStyle = {
-        position: 'absolute',
-        width: '330px',
-        height: '372px',
-        backgroundColor: '#3F4447',
-        top: '10%',
-        right: '380px',
-    };
 
-    const responsiveDropdownStyle = {
-        position: 'absolute',
-        right: '110px',
-        top: '75px',
-        color: '#fff',
-        width: '184px',
-        backgroundColor: '#3F4447',
-        boxShadow: '0px 5px 20px 0px rgba(0, 0, 0, 0.10)',
-        borderRadius: '4px',
-        zIndex: 10,
-    };
     return (
         <nav className="w-full bg-white shadow-md" style={{ backgroundColor: '#3F4447' }}>
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-2">
@@ -132,7 +113,7 @@ export default function Navbar() {
                         className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
                             }`}
                     >
-                        <ul className="items-center font-roboto justify-center space-y-8 md:flex md:space-x-2 md:space-y-0">
+                        <ul className="items-center font-roboto justify-center space-y-4 md:flex md:space-x-2 md:space-y-0">
                             <div className="relative">
                                 <button
                                     ref={dropdownRef}
@@ -163,12 +144,12 @@ export default function Navbar() {
                                 <p>Notification</p>
                             </button>
                             {openNotificationDropdown && (
-                                <div ref={notificationDropdownRef} style={notificationDropdownStyle}>
+                                <div ref={notificationDropdownRef} className="notif-dropdown">
                                     <DropNotification />
                                 </div>
                             )}
                             <Link to={'/save-documents'} >
-                                <button className="pl-4 pr-6 items-center gap-2 flex font-medium leading-5 py-[10px] rounded-[100px] border-[1px] text-center text-white tracking-[0.1px]">
+                                <button className="pl-4 pr-6 items-center mt-4 md:mt-0 gap-2 flex font-medium leading-5 py-[10px] rounded-[100px] border-[1px] text-center text-white tracking-[0.1px]">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                         <path d="M948.312 433.853C948.204 433.853 948.132 433.925 948.132 434.033C948.132 434.141 948.204 434.213 948.312 434.213H949.086C949.194 434.213 949.266 434.141 949.266 434.033C949.266 433.925 949.194 433.853 949.086 433.853H948.312ZM949.086 434.465H948.312C948.204 434.465 948.132 434.537 948.132 434.645C948.132 434.753 948.204 434.825 948.312 434.825H949.086C949.194 434.825 949.266 434.753 949.266 434.645C949.266 434.537 949.194 434.465 949.086 434.465ZM949.086 435.059H948.312C948.204 435.059 948.132 435.131 948.132 435.239C948.132 435.347 948.204 435.419 948.312 435.419H949.086C949.194 435.419 949.266 435.347 949.266 435.239C949.266 435.149 949.194 435.059 949.086 435.059ZM9.00001 0.449219C4.28401 0.449219 0.450012 4.28322 0.450012 8.99922C0.450012 13.7152 4.28401 17.5492 9.00001 17.5492C13.716 17.5492 17.55 13.7152 17.55 8.99922C17.55 4.28322 13.716 0.449219 9.00001 0.449219ZM6.10201 7.48722C6.19201 7.30722 6.37201 7.18122 6.57001 7.18122H7.74001V3.95922C7.74001 3.67122 7.97401 3.45522 8.24401 3.45522H9.73801C10.026 3.45522 10.242 3.68922 10.242 3.95922V7.19922H11.412C11.61 7.19922 11.79 7.32522 11.88 7.50522C11.952 7.68522 11.916 7.90122 11.79 8.06322L9.37801 10.6552C9.18001 10.8532 8.82001 10.8532 8.64001 10.6552L6.19201 8.04522C6.04801 7.90122 6.01201 7.68522 6.10201 7.48722ZM13.086 12.9052C13.086 13.3012 12.762 13.6252 12.366 13.6252H5.63401C5.23801 13.6252 4.91401 13.3012 4.91401 12.9052V11.3932C4.91401 10.9972 5.23801 10.6732 5.63401 10.6732C6.03001 10.6732 6.35401 10.9972 6.35401 11.3932V12.2032H11.682V11.3932C11.682 10.9972 12.006 10.6732 12.402 10.6732C12.798 10.6732 13.122 10.9972 13.122 11.3932V12.9052H13.086Z" fill="white" />
                                     </svg>
@@ -184,7 +165,7 @@ export default function Navbar() {
                                 </svg>
                             </button>
                             {openProfileDropdown && (
-                                <div ref={profileDropdownRef} style={responsiveDropdownStyle}>
+                                <div ref={profileDropdownRef} className="dropown-profile">
                                     <ul className="uppercase font-sans text-sm leading-5">
                                         <Link to='/profile' className="py-3 px-4 flex items-center gap-2 hover:bg-dropdown-hover hover:ease-out hover:duration-300 cursor-pointer">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -192,11 +173,11 @@ export default function Navbar() {
                                             </svg>
                                             Profile
                                         </Link>
-                                        <li className="py-3 px-4 flex gap-2 hover:bg-dropdown-hover hover:ease-out hover:duration-300 cursor-pointer">
+                                        <Link to='/login' className="py-3 px-4 flex gap-2 hover:bg-dropdown-hover hover:ease-out hover:duration-300 cursor-pointer">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                 <path d="M12.375 21.6875C7.02459 21.6875 2.6875 17.3504 2.6875 12C2.6875 6.64959 7.02459 2.3125 12.375 2.3125C17.7254 2.3125 22.0625 6.64959 22.0625 12C22.0625 17.3504 17.7254 21.6875 12.375 21.6875ZM17.2187 15.875L22.0625 12L17.2187 8.125V11.0312H9.46875V12.9687H17.2187V15.875Z" fill="#FBE60F" />
                                             </svg>
-                                            Logout</li>
+                                            Logout</Link>
                                     </ul>
                                 </div>
                             )}

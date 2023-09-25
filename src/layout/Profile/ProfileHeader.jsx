@@ -1,17 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { BiCamera } from 'react-icons/bi';
-import Button from '../../components/Button';
+
 
 const ProfileHeader = () => {
     const [profileImage, setProfileImage] = useState(null);
     const fileInputRef = useRef(null);
     const [activeMode, setActiveMode] = useState("light");
-
     const handleModeClick = (mode) => {
         setActiveMode(mode);
     };
 
-    // Handler untuk mengubah foto profil
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -23,12 +21,10 @@ const ProfileHeader = () => {
         }
     };
 
-    // Handler untuk menghapus foto profil
     const handleImageRemove = () => {
         setProfileImage(null);
     };
 
-    // Handler untuk membuka dialog pemilihan berkas ketika tombol "Change Photo" diklik
     const handleImageUploadClick = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click();
