@@ -25,7 +25,7 @@ const SavedLayout = () => {
     return (
         <div className=''>
             <div className='mt-11'>
-                <h1 className='text-white text-[18px] md:text-[22px] font-inter font-semibold'>Saved Document</h1>
+                <h1 className='dark:text-white text-[#5C5C5C] text-[18px] md:text-[22px] font-inter font-semibold'>Saved Document</h1>
             </div>
             <div className='mt-8'>
                 {displayedData.map((data) => (
@@ -35,7 +35,7 @@ const SavedLayout = () => {
             <div className="flex justify-center py-4 md:py-8">
                 <button
                     onClick={prevPage}
-                    className="text-white flex items-center font-inter font-bold text-sm space-x-2"
+                    className="dark:text-white text-[#5C5C5C] flex items-center font-inter font-bold text-sm space-x-2"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
                         <path d="M11.9999 3.58594L10.5857 2.17173L3.51465 9.24278L10.5857 16.3138L11.9999 14.8996L7.34308 9.24278L11.9999 3.58594Z" fill="white" />
@@ -48,7 +48,7 @@ const SavedLayout = () => {
                         onClick={() => setCurrentPage(index + 1)}
                         className={`mx-1 md:mx-2 w-6 h-6 md:w-8 md:h-8 rounded-lg ${currentPage === index + 1
                             ? 'bg-primary-color text-text-board-color text-xs md:text-sm font-bold'
-                            : ' text-white text-xs md:text-sm'
+                            : ' dark:text-white text-[#5C5C5C] text-xs md:text-sm'
                             }`}
                     >
                         {index + 1}
@@ -56,7 +56,7 @@ const SavedLayout = () => {
                 ))}
                 <button
                     onClick={nextPage}
-                    className="text-white flex items-center font-inter font-bold text-sm space-x-2"
+                    className="dark:text-white text-[#5C5C5C] flex items-center font-inter font-bold text-sm space-x-2"
                 >
                     <h1 className='text-xs md:text-sm'>Selanjutnya</h1>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">

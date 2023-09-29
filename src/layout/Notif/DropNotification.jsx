@@ -13,16 +13,16 @@ const DropNotification = () => {
     };
 
     return (
-        <div className='w-[330px] font-inter h-[372px] p-[14px] notification-container' style={{ backgroundColor: '#3F4447', overflowY: 'auto', maxHeight: '372px' }}>
+        <div className='w-[330px] font-inter h-[372px] p-[14px] notification-container bg-[#fff] dark:bg-[#3f4447]' style={{ overflowY: 'auto', maxHeight: '372px' }}>
             <div className='flex gap-2'>
                 <button
-                    className={`${activeTab === 'update' ? 'text-primary-color border-primary-color' : 'text-[#8f8f8f]'} h-[32px] w-[82px] rounded-md font-medium text-sm border-2 ${activeTab === 'update' ? 'border-primary-color' : 'border-[#D5D5D5]'}`}
+                    className={`${activeTab === 'update' ? ' dark:text-white border-primary-color' : 'text-[#8f8f8f]'} h-[32px] w-[82px] rounded-md font-medium text-sm border-2 ${activeTab === 'update' ? 'border-primary-color bg-primary-color dark:bg-transparent text-[#000]' : 'border-[#D5D5D5]'}`}
                     onClick={() => handleTabClick('update')}
                 >
                     Update
                 </button>
                 <button
-                    className={`${activeTab === 'history' ? 'border-primary-color text-white' : 'text-[#8f8f8f]'} h-[32px] w-[82px]  rounded-md font-medium text-sm border-2 ${activeTab === 'history' ? 'border-primary-color' : 'border-[#D5D5D5]'}`}
+                    className={`${activeTab === 'history' ? 'border-primary-color dark:text-white' : 'text-[#8f8f8f]'} h-[32px] w-[82px]  rounded-md font-medium text-sm border-2 ${activeTab === 'history' ? 'border-primary-color bg-primary-color dark:bg-transparent text-[#000]' : 'border-[#D5D5D5]'}`}
                     onClick={() => handleTabClick('history')}
                 >
                     History
@@ -34,7 +34,7 @@ const DropNotification = () => {
                         {dataNotification.slice(0, 3).map((item, index) => (
                             <div key={index}>
                                 <div className='px-4 text-[10px] font-normal h-[18px] rounded inline-flex items-center bg-[#d5d5d5]'>{item.title}</div>
-                                <h2 className='font-bold my-2 text-sm text-[#fff]'>{item.desc}</h2>
+                                <h2 className='font-bold my-2 text-sm text-[#5c5c5c] dark:text-[#fff]'>{item.desc}</h2>
                                 <Link className='text-xs leading-5 text-[#bababa]'>Cek Selengkapnya</Link>
                                 <hr className='mt-2' />
                             </div>
@@ -45,7 +45,7 @@ const DropNotification = () => {
                         {dataHistory.slice(0, 5).map((item, index) => (
                             <div key={index}>
                                 <div className='px-4 text-[10px] font-normal h-[18px] rounded inline-flex items-center bg-[#d5d5d5]'>{item.title}</div>
-                                <h2 className='font-bold my-2 text-sm text-[#fff]'>{item.desc}</h2>
+                                <h2 className='font-bold my-2 text-sm text-[#5c5c5c] dark:text-[#fff]'>{item.desc}</h2>
                                 <Link className='text-xs leading-5 text-[#bababa]'>Download hasil sign board yang kamu buat disini</Link>
                                 <hr className='mt-2' />
                             </div>

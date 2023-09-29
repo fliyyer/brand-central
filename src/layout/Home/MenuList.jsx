@@ -47,55 +47,55 @@ const MenuList = () => {
             <div className="overflow-x-auto px-4">
                 <ul className="flex mt-[26px] gap-4">
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'All' ? 'text-[#3a3a3a] bg-primary-color px-[24px]' : 'text-white'} transition-all duration-300 ease-in-out`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'All' ? 'text-[#3a3a3a] bg-primary-color px-[24px]' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out`}
                         onClick={() => handleMenuClick('All')}
                     >
                         All
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] whitespace-nowrap px-[11px] py-[9.6px]  ${activeMenu === 'Sign Board' ? 'text-[#3a3a3a] bg-primary-color px-[22px] ' : 'text-white'} transition-all duration-300 ease-in-out`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] whitespace-nowrap px-[11px] py-[9.6px]  ${activeMenu === 'Sign Board' ? 'text-[#3a3a3a] bg-primary-color px-[22px] ' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out`}
                         onClick={() => handleMenuClick('Sign Board')}
                     >
                         Sign Board
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px]  ${activeMenu === 'Banner' ? 'text-[#3a3a3a] bg-primary-color px-[22px] ' : 'text-white'} transition-all duration-300 ease-in-out`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px]  ${activeMenu === 'Banner' ? 'text-[#3a3a3a] bg-primary-color px-[22px] ' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out`}
                         onClick={() => handleMenuClick('Banner')}
                     >
                         Banner
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] whitespace-nowrap py-[9.6px] ${activeMenu === 'Social Media' ? 'text-[#3a3a3a] bg-primary-color transition-all px-[22px] duration-300 ease-in-out' : 'text-white'} transition-all duration-300 ease-in-out`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] whitespace-nowrap py-[9.6px] ${activeMenu === 'Social Media' ? 'text-[#3a3a3a] bg-primary-color transition-all px-[22px] duration-300 ease-in-out' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out`}
                         onClick={() => handleMenuClick('Social Media')}
                     >
                         Social Media
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Flyer' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-white'} transition-all duration-300 ease-in-out`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Flyer' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out`}
                         onClick={() => handleMenuClick('Flyer')}
                     >
                         Flyer
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Namecard' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-white'} transition-all duration-300 ease-in-out`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Namecard' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out`}
                         onClick={() => handleMenuClick('Namecard')}
                     >
                         Namecard
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] whitespace-nowrap py-[9.6px] ${activeMenu === 'Email Signature' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-white'} transition-all duration-300 ease-in-out'}`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] whitespace-nowrap py-[9.6px] ${activeMenu === 'Email Signature' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out'}`}
                         onClick={() => handleMenuClick('Email Signature')}
                     >
                         Email Signature
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Envelope' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-white'} transition-all duration-300 ease-in-out'}`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Envelope' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out'}`}
                         onClick={() => handleMenuClick('Envelope')}
                     >
                         Envelope
                     </li>
                     <li
-                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Proposal' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-white'} transition-all duration-300 ease-in-out'}`}
+                        className={`cursor-pointer font-medium text-sm rounded-[99px] px-[11px] py-[9.6px] ${activeMenu === 'Proposal' ? 'text-[#3a3a3a] bg-primary-color px-[22px]' : 'text-[#5C5C5C] dark:text-white'} transition-all duration-300 ease-in-out'}`}
                         onClick={() => handleMenuClick('Proposal')}
                     >
                         Proposal

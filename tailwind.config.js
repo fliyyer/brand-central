@@ -22,8 +22,8 @@ export default {
         'dropdown-hover': '#4E5356'
       },
       backgroundImage: {
-        'dark': 'linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%), url(\'../../assets/images/bg-dark.png\'), lightgray 50% / cover no-repeat',
-      },      
+        'bg-content': 'linear-gradient(0deg, rgba(0, 0, 0, 0.70) 0%, rgba(0, 0, 0, 0.70) 100%), url(\'../brand-central/src/assets/images/bg-dark.png\')',
+      },            
       blur: {
         '3': '3px',
       },

@@ -4,7 +4,7 @@ import FindHome from '../../assets/images/find-id.png'
 import { AiOutlineSearch, AiOutlineCloseCircle } from 'react-icons/ai'
 import { Link } from "react-router-dom";
 import { searchByListing } from "../../utils/ListingId";
-
+import { ImLocation2 } from 'react-icons/im'
 function Popup({ onClose, to }) {
     const [filterIdInput, setFilterIdInput] = useState("");
     const [filteredListing, setFilteredListing] = useState([]);
@@ -29,10 +29,10 @@ function Popup({ onClose, to }) {
 
     return (
         <div className="fixed font-inter top-0 left-0 right-0 bottom-0 flex justify-center items-center px-11 z-50 bg-black bg-opacity-50">
-            <div className="bg-[#3F4447] rounded-[20px] w-[796px] h-[535px] flex gap-11 justify-center items-center relative">
+            <div className="dark:bg-[#3F4447] bg-[#fff] rounded-[20px] w-[796px] h-[535px] flex gap-11 justify-center items-center relative">
                 <div className="w-full md:w-1/2 px-5">
                     <button
-                        className="text-white rounded-full absolute top-4 left-4 items-center z-10"
+                        className="dark:text-white text-[#5c5c5c] rounded-full absolute top-4 left-4 items-center z-10"
                         onClick={handleClose}
                     >
                         <AiOutlineCloseCircle className="w-6 h-6" />
@@ -61,10 +61,11 @@ function Popup({ onClose, to }) {
                         <div className="px-10">
                             <div className="flex font-inter py-6 gap-4">
                                 <img src={filteredListing[0].image} alt={`ID ${filteredListing[0].id}`} className="w-[91px] h-auto rounded-md" />
-                                <div className="text-[#fff]">
+                                <div className="dark:text-[#fff] text-[#5C5C5C]">
                                     <h2 className="text-sm">{filteredListing[0].title}</h2>
                                     <h2 className="text-xs my-[6px] font-bold">Listing ID {filteredListing[0].listing}</h2>
-                                    <h2 className="text-xs font-light">Location: {filteredListing[0].location}</h2>
+                                    <h2 className="text-xs font-light flex items-center gap-[5.5px]"><div className="dark:text-white text-[#5C5C5C]">
+                                        <ImLocation2 /></div> {filteredListing[0].location}</h2>
                                 </div>
                             </div>
                             <Link to={to}>

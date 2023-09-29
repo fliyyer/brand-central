@@ -37,7 +37,7 @@ const InputLogin = () => {
                         name="email"
                         value={email}
                         onChange={handleEmailChange}
-                        className="appearance-none bg-transparent h-[45px] border-2 rounded-[90px] w-full py-6 px-3 text-white placeholder-white placeholder:font-inter placeholder:font-light  focus:outline-none focus:shadow-outline font-inter"
+                        className="appearance-none bg-transparent h-[45px] border-2 border-[#5C5C5C] rounded-[90px] w-full py-6 px-3 dark:text-white text-[#5C5C5C] placeholder-[#BABABA] dark:placeholder-white placeholder:font-inter placeholder:font-light  focus:outline-none focus:shadow-outline font-inter"
                         placeholder="Email Address"
                         required
                     />
@@ -49,7 +49,7 @@ const InputLogin = () => {
                         name="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        className="appearance-none placeholder:font-inter bg-transparent h-[45px] border-2 rounded-[90px] w-full py-6 px-3 placeholder:font-light text-white placeholder-white focus:outline-none focus:shadow-outline"
+                        className="appearance-none placeholder:font-inter bg-transparent h-[45px] border-2 border-[#5C5C5C] rounded-[90px] w-full py-6 px-3 placeholder:font-light dark:text-white text-[#5C5C5C] placeholder-[#BABABA] dark:placeholder-white focus:outline-none focus:shadow-outline"
                         placeholder="Password"
                         required
                     />

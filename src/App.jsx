@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import store from '../src/redux/store'
@@ -52,6 +52,27 @@ import SignBoardEdit15 from './layout/SignBoard/SignBoardEdit15';
 import SignBoardEdit16 from './layout/SignBoard/SignBoardEdit16';
 
 const App = () => {
+    const savedTheme = localStorage.getItem('theme');
+    const [theme, setTheme] = useState(savedTheme || 'light');
+    const element = document.documentElement;
+
+    useEffect(() => {
+        switch (theme) {
+            case 'dark':
+                element.classList.add('dark');
+                break;
+            case 'light':
+                element.classList.remove('dark');
+                break;
+            default:
+                break;
+        }
+    }, [theme]);
+
+    const toggleTheme = (newTheme) => {
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    };
     return (
         <Provider store={store}>
             <Router>

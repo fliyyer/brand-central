@@ -4,10 +4,10 @@ const HistoryDocument = (props) => {
     const { title } = props;
     return (
         <><div className='flex items-center gap-[38px]'>
-            <h1 className='text-sm whitespace-nowrap md:text-[22px] text-white font-light font-roboto'>{title}</h1>
+            <h1 className='text-sm whitespace-nowrap md:text-[22px] text-[#5C5C5C] dark:text-white font-light font-roboto'>{title}</h1>
             <div className='space-x-1 flex md:flex-none'>
                 <button
-                    className='w-14 md:w-[111px] py-1 md:py-[10px] text-white text-[10px] md:text-sm font-roboto font-medium md:px-6 rounded-full'
+                    className='w-14 md:w-[111px] py-1 md:py-[10px] text-[#5C5C5C] dark:text-white text-[10px] md:text-sm font-roboto font-medium md:px-6 rounded-full'
                     style={{
                         border: '1px solid var(--m-3-sys-light-outline, #79747E)'
                     }}
@@ -15,7 +15,7 @@ const HistoryDocument = (props) => {
                     View
                 </button>
                 <button
-                    className='w-14 md:w-[111px] py-1 md:py-[10px] text-white  text-[10px] md:text-sm font-roboto font-medium md:px-6 rounded-full'
+                    className='w-14 md:w-[111px] py-1 md:py-[10px] text-[#5C5C5C] dark:text-white text-[10px] md:text-sm font-roboto font-medium md:px-6 rounded-full'
                     style={{
                         border: '1px solid var(--m-3-sys-light-outline, #79747E)'
                     }}
@@ -23,7 +23,7 @@ const HistoryDocument = (props) => {
                     Edit
                 </button>
                 <button
-                    className=' md:w-[111px] w-14 py-1 md:py-[10px] text-white text-[10px] md:text-sm font-roboto font-medium md:px-6 rounded-full'
+                    className=' md:w-[111px] w-14 py-1 md:py-[10px] text-[#5C5C5C] dark:text-white text-[10px] md:text-sm font-roboto font-medium md:px-6 rounded-full'
                     style={{
                         border: '1px solid var(--m-3-sys-light-outline, #79747E)'
                     }}

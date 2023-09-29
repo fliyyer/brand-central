@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <div className='text-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-11 font-roboto text-white'>
+        <div className='text-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-11 font-roboto text-[#5C5C5C] dark:text-white'>
             <h1 className='text-xl lg:text-2xl xl:text-[32px] font-medium leading-tight'>
                 All tools in one place
             </h1>

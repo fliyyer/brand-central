@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 
 const Profile = () => {
     return (
-        <div className='w-full min-h-screen bg-cover bg-dark '>
+        <div className='w-full min-h-screen bg-cover bg-[#fff] dark:bg-bg-content '>
             <div>
                 <Navbar />
                 <div className='flex justify-center items-center'>

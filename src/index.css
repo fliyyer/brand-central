@@ -80,7 +80,6 @@
     top: 75px;
     width: 184px;
     color: #fff;
-    background-color: #3F4447;
     box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.10);
     border-radius: 4px;
     z-index: 10;
@@ -94,6 +93,15 @@
     top: 10%;
     right: 380px;
 }
+
+.dark .icon {
+    fill: white;
+}
+
+.light .icon {
+    fill: #5c5c5c;
+}
+
 @media screen and (min-width: 1920px) {
     .dropown-profile {
         right: 300px;
