@@ -3,7 +3,7 @@ import React from 'react'
 const HistoryDocument = (props) => {
     const { title } = props;
     return (
-        <><div className='flex items-center gap-[38px]'>
+        <><div className='flex items-center justify-between gap-8 '>
             <h1 className='text-sm whitespace-nowrap md:text-[22px] text-[#5C5C5C] dark:text-white font-light font-roboto'>{title}</h1>
             <div className='space-x-1 flex md:flex-none'>
                 <button

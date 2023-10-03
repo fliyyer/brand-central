@@ -80,7 +80,7 @@ const Signboard7lm = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <div className='w-[226px] h-[452px] bg-[#f4f4f4]'>
+        <div className='w-[226px] h-[452px] bg-[#fff] dark:bg-[#f4f4f4]'>
             <img src={Rw} alt="Raywhite" className='w-[52px] absolute right-3' />
             <div
                 className='w-full bg-slate-100 h-[249px] bg-cover bg-center bg-no-repeat relative'

@@ -73,7 +73,7 @@ const Signboard4lm = (props) => {
     }, []);
 
     return (
-        <div className='w-[583px] h-[466px] bg-[#f4f4f4]'>
+        <div className='w-[583px] h-[466px] bg-[#fff] dark:bg-[#f4f4f4]'>
             <div className='flex gap-8 items-center'>
                 <div>
                     <div className='flex gap-[3px]'>

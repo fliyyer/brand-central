@@ -71,7 +71,7 @@ const Signboard8 = (props) => {
     }, []);
 
     return (
-        <div className='w-[864px] h-[432px] flex bg-[#f4f4f4]'>
+        <div className='w-[864px] h-[432px] flex bg-[#fff] dark:bg-[#f4f4f4]'>
             <div>
                 <img src={Rw} className='w-[146px] h-[147px]' alt="RayWhite" />
                 <div

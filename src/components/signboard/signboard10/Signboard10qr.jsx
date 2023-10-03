@@ -81,7 +81,7 @@ const Signboard10qr = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <div className='w-[738px] flex gap-[2px] h-[492px] bg-[#f4f4f4]'>
+        <div className='w-[738px] flex gap-[2px] h-[492px] bg-[#fff] dark:bg-[#f4f4f4]'>
             <div>
                 <div className='flex'>
                     <div>

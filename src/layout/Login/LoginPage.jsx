@@ -11,7 +11,7 @@ const LoginPage = () => {
 
     return (
         <div
-            className={`min-h-screen flex flex-col items-center justify-center dark:bg-bg-content bg-white relative`}
+            className={`min-h-screen flex flex-col items-center justify-center dark:bg-bg-content bg-cover bg-no-repeat bg-white relative`}
         >
             <div className="absolute top-0">
                 <img src={RayWhite} alt="Logo Ray White" />

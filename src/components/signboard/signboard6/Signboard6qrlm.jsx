@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Rw from '../../../assets/images/rw-hd.png'
 import Sb1 from '../../../assets/images/instagram/ig1.jpeg';
 import Sb2 from '../../../assets/images/instagram/ig2.jpeg';
 import Sb4 from '../../../assets/images/instagram/ig5.jpeg';
@@ -84,7 +83,7 @@ const Signboard6qrlm = (props) => {
     }, []);
 
     return (
-        <div className='w-[600px] h-[398px] flex bg-[#f4f4f4]' >
+        <div className='w-[600px] h-[398px] flex bg-[#fff] dark:bg-[#f4f4f4]' >
             <div className='flex'>
                 <div>
                     <img src={Rwi} className='w-[135px] h-[137px] mb-[2px]' alt="" />

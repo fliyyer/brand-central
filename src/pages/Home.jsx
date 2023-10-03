@@ -5,10 +5,13 @@ import Contents from '../layout/Home/Contents'
 
 const Home = () => {
     return (
-        <><Navbar /><div className='w-full min-h-screen bg-[#f2f2f2] dark:bg-bg-content bg-cover'>
-            <Header />
-            <Contents />
-        </div></>
+        <div className='w-full min-h-screen bg-cover bg-[#f2f2f2] dark:bg-bg-content '>
+            <div>
+                <Navbar />
+                <Header />
+                <Contents />
+            </div>
+        </div>
     )
 }
 

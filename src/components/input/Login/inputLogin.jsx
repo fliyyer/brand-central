@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import Button from '../../Button';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { HiEyeOff, HiEye } from 'react-icons/hi'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginSuccess, loginFailure } from '../../../redux/Slice/authSlice';
 
 const InputLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -20,12 +23,30 @@ const InputLogin = () => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Cek Validasi
-        console.log('Email:', email);
-        console.log('Password:', password);
+        try {
+            const response = await axios.post('https://brandcentralapi.raywhite.co.id/signin', {
+                email,
+                password,
+                "RequestToken": true
+            });
+            sessionStorage.setItem('token', response.data.token);
+            sessionStorage.setItem('email', response.data.email);
+            sessionStorage.setItem('firstname', response.data.firstname);
+            sessionStorage.setItem('lastname', response.data.lastname);
+            navigate('/');
+        } catch (error) {
+            dispatch(loginFailure(error.message));
+            console.error('Login Failure:', error);
+        }
     };
+
+    useEffect(() => {
+        if (sessionStorage.getItem('token') && sessionStorage.getItem('token') !== 'undefined') {
+            navigate('/');
+        }
+    });
 
     return (
         <div>

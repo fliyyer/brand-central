@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import RwWhite from '../../../assets/images/raywhite-putih.png';
 import { FaPhone } from 'react-icons/fa';
 import { BiCamera } from 'react-icons/bi';
+import ImageCropPopup from '../../pop-up/ImageCropPopup';
 
 const Banner100x100white = () => {
     const [profileImage, setProfileImage] = useState(null);
@@ -15,6 +16,7 @@ const Banner100x100white = () => {
         officeName: 'Ray White Menteng',
         officeWebsite: 'menteng.raywhite.co.id',
     });
+    const [isCropPopupOpen, setIsCropPopupOpen] = useState(false);
 
     const handleEditAndSave = (field, e) => {
         if (e.key === 'Enter') {
@@ -32,6 +34,7 @@ const Banner100x100white = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setProfileImage(reader.result);
+                openCropPopup();
             };
             reader.readAsDataURL(file);
         }
@@ -45,6 +48,19 @@ const Banner100x100white = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click();
         }
+    };
+
+    const openCropPopup = () => {
+        setIsCropPopupOpen(true);
+    };
+
+    const closeCropPopup = () => {
+        setIsCropPopupOpen(false);
+    };
+
+    const handleCropImage = (croppedImage) => {
+        setProfileImage(croppedImage);
+        closeCropPopup();
     };
 
     return (
@@ -64,6 +80,13 @@ const Banner100x100white = () => {
                     {content.title}
                 </h1>
                 <div className="relative w-[110px] h-[110px] rounded-full overflow-hidden mb-2">
+                    {isCropPopupOpen && (
+                        <ImageCropPopup
+                            image={profileImage}
+                            onSave={handleCropImage}
+                            onCancel={closeCropPopup}
+                        />
+                    )}
                     <label htmlFor="file-input" className="w-full h-full bg-gray-200 flex items-center justify-center cursor-pointer">
                         {profileImage ? (
                             <img

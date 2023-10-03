@@ -81,7 +81,7 @@ const Signboard9 = (props) => {
     }, []);
 
     return (
-        <div className='w-[350px] h-[526px] bg-[#f4f4f4]'>
+        <div className='w-[350px] h-[526px] bg-[#fff] dark:bg-[#f4f4f4]'>
             <div className='flex gap-[1.7px]'>
                 <div>
                     <div

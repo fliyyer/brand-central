@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import popImgReducer from './Slice/popImgSlice';
+import authSlice from './Slice/authSlice';
+import documentSlice from './Slice/documentSlice';
 
 const store = configureStore({
   reducer: {
-    popImg: popImgReducer,
+    auth: authSlice,
+    documents: documentSlice,
   },
 });
 

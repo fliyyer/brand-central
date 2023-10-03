@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
-import bgDark from '../assets/images/bg-dark.png'
 import SavedLayout from '../layout/SavedDocuments/SavedLayout'
 
 

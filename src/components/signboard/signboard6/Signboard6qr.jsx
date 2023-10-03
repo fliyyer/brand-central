@@ -10,7 +10,7 @@ import { FaCar } from 'react-icons/fa';
 import { BiSolidPhoneCall } from 'react-icons/bi'
 import { IoMdMail } from 'react-icons/io'
 import Rwi from '../../../assets/images/rw-hd.png';
-import Qr from '../../../assets/images/QR Code.png';
+import Qr from '../../../assets/images/QR code.png';
 
 const Signboard6qr = (props) => {
     const [bgImage, setBgImage] = useState(Sb1)
@@ -83,7 +83,7 @@ const Signboard6qr = (props) => {
     }, []);
 
     return (
-        <div className='w-[600px] h-[398px] flex bg-[#f4f4f4]' >
+        <div className='w-[600px] h-[398px] flex bg-[#fff] dark:bg-[#f4f4f4]' >
             <div className='flex'>
                 <div>
                     <img src={Rwi} className='w-[135px] h-[137px] mb-[2px]' alt="" />

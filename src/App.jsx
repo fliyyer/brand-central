@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import store from '../src/redux/store'
 import Home from './pages/Home';
@@ -50,6 +51,7 @@ import SignBoardEdit13 from './layout/SignBoard/SignBoardEdit13';
 import SignBoardEdit14 from './layout/SignBoard/SignBoardEdit14';
 import SignBoardEdit15 from './layout/SignBoard/SignBoardEdit15';
 import SignBoardEdit16 from './layout/SignBoard/SignBoardEdit16';
+import { selectIsAuthenticated } from './redux/Slice/authSlice';
 
 const App = () => {
     const savedTheme = localStorage.getItem('theme');
@@ -73,62 +75,62 @@ const App = () => {
         setTheme(newTheme);
         localStorage.setItem('theme', newTheme);
     };
+
+    const isAuthenticated = useSelector(selectIsAuthenticated)
     return (
-        <Provider store={store}>
-            <Router>
-                <Routes>
-                    <Route path="*" element={<Navigate to="/" />} />
-                    <Route path='/' element={<Home />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/profile' element={<Profile />} />
-                    <Route path='/save-documents' element={<SaveDocuments />} />
-                    <Route path='/alltools' element={<AllTools />} />
-                    <Route path='/sign-board/edit1' element={<SignBoardEdit1 />} />
-                    <Route path='/sign-board/edit2' element={<SignBoardEdit2 />} />
-                    <Route path='/sign-board/edit3' element={<SignBoardEdit3 />} />
-                    <Route path='/sign-board/edit4' element={<SignBoardEdit4 />} />
-                    <Route path='/sign-board/edit5' element={<SignBoardEdit5 />} />
-                    <Route path='/sign-board/edit6' element={<SignBoardEdit6 />} />
-                    <Route path='/sign-board/edit7' element={<SignBoardEdit7 />} />
-                    <Route path='/sign-board/edit8' element={<SignBoardEdit8 />} />
-                    <Route path='/sign-board/edit9' element={<SignBoardEdit9 />} />
-                    <Route path='/sign-board/edit10' element={<SignBoardEdit10 />} />
-                    <Route path='/sign-board/edit11' element={<SignBoardEdit11 />} />
-                    <Route path='/sign-board/edit12' element={<SignBoardEdit12 />} />
-                    <Route path='/sign-board/edit13' element={<SignBoardEdit13 />} />
-                    <Route path='/sign-board/edit14' element={<SignBoardEdit14 />} />
-                    <Route path='/sign-board/edit15' element={<SignBoardEdit15 />} />
-                    <Route path='/sign-board/edit16' element={<SignBoardEdit16 />} />
-                    <Route path='/banner/edit/1x1' element={<BannerEdit1x1 />} />
-                    <Route path='/banner/edit/2x1' element={<BannerEdit2x1 />} />
-                    <Route path='/banner/edit/3x1' element={<BannerEdit3x1 />} />
-                    <Route path='/banner/edit/4x1' element={<BannerEdit4x1 />} />
-                    <Route path='/banner/edit/22x1' element={<BannerEdit22x1 />} />
-                    <Route path='/banner/edit/60x160' element={<BannerEdit6x16 />} />
-                    <Route path='/socialmedia/edit/1' element={<SmEdit1 />} />
-                    <Route path='/socialmedia/edit/2' element={<SmEdit2 />} />
-                    <Route path='/socialmedia/edit/3' element={<SmEdit3 />} />
-                    <Route path='/socialmedia/edit/4' element={<SmEdit4 />} />
-                    <Route path='/socialmedia/edit/5' element={<SmEdit5 />} />
-                    <Route path='/socialmedia/edit/6' element={<SmEdit6 />} />
-                    <Route path='/socialmedia/edit/7' element={<SmEdit7 />} />
-                    <Route path='/socialmedia/edit/8' element={<SmEdit8 />} />
-                    <Route path='/socialmedia/edit/9' element={<SmEdit9 />} />
-                    <Route path='/socialmedia/edit/10' element={<SmEdit10 />} />
-                    <Route path='/flyer/edit/1' element={<FlyerEdit1 />} />
-                    <Route path='/flyer/edit/2' element={<FlyerEdit2 />} />
-                    <Route path='/flyer/edit/3' element={<FlyerEdit3 />} />
-                    <Route path='/emailsignature/edit/1' element={<EmailSignaturEdit1 />} />
-                    <Route path='/emailsignature/edit/2' element={<EmailSignaturEdit2 />} />
-                    <Route path='/envelope/edit/1' element={<EnvelopeEdit1 />} />
-                    <Route path='/envelope/edit/2' element={<EnvelopeEdit2 />} />
-                    <Route path='/namecard/edit/1' element={<NamecardEdit1 />} />
-                    <Route path='/namecard/edit/2' element={<NamecardEdit2 />} />
-                    <Route path='/namecard/edit/3' element={<NamecardEdit3 />} />
-                    <Route path='/proposal/edit/1' element={<ProposalEdit />} />
-                </Routes>
-            </Router>
-        </Provider>
+        <Router>
+            <Routes>
+                <Route path="*" element={<Navigate to="/" />} />
+                <Route path='/' element={<Home />} />
+                <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <Login />} />
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/save-documents' element={<SaveDocuments />} />
+                <Route path='/alltools' element={<AllTools />} />
+                <Route path='/sign-board/edit1' element={<SignBoardEdit1 />} />
+                <Route path='/sign-board/edit2' element={<SignBoardEdit2 />} />
+                <Route path='/sign-board/edit3' element={<SignBoardEdit3 />} />
+                <Route path='/sign-board/edit4' element={<SignBoardEdit4 />} />
+                <Route path='/sign-board/edit5' element={<SignBoardEdit5 />} />
+                <Route path='/sign-board/edit6' element={<SignBoardEdit6 />} />
+                <Route path='/sign-board/edit7' element={<SignBoardEdit7 />} />
+                <Route path='/sign-board/edit8' element={<SignBoardEdit8 />} />
+                <Route path='/sign-board/edit9' element={<SignBoardEdit9 />} />
+                <Route path='/sign-board/edit10' element={<SignBoardEdit10 />} />
+                <Route path='/sign-board/edit11' element={<SignBoardEdit11 />} />
+                <Route path='/sign-board/edit12' element={<SignBoardEdit12 />} />
+                <Route path='/sign-board/edit13' element={<SignBoardEdit13 />} />
+                <Route path='/sign-board/edit14' element={<SignBoardEdit14 />} />
+                <Route path='/sign-board/edit15' element={<SignBoardEdit15 />} />
+                <Route path='/sign-board/edit16' element={<SignBoardEdit16 />} />
+                <Route path='/banner/edit/1x1' element={<BannerEdit1x1 />} />
+                <Route path='/banner/edit/2x1' element={<BannerEdit2x1 />} />
+                <Route path='/banner/edit/3x1' element={<BannerEdit3x1 />} />
+                <Route path='/banner/edit/4x1' element={<BannerEdit4x1 />} />
+                <Route path='/banner/edit/22x1' element={<BannerEdit22x1 />} />
+                <Route path='/banner/edit/60x160' element={<BannerEdit6x16 />} />
+                <Route path='/socialmedia/edit/1' element={<SmEdit1 />} />
+                <Route path='/socialmedia/edit/2' element={<SmEdit2 />} />
+                <Route path='/socialmedia/edit/3' element={<SmEdit3 />} />
+                <Route path='/socialmedia/edit/4' element={<SmEdit4 />} />
+                <Route path='/socialmedia/edit/5' element={<SmEdit5 />} />
+                <Route path='/socialmedia/edit/6' element={<SmEdit6 />} />
+                <Route path='/socialmedia/edit/7' element={<SmEdit7 />} />
+                <Route path='/socialmedia/edit/8' element={<SmEdit8 />} />
+                <Route path='/socialmedia/edit/9' element={<SmEdit9 />} />
+                <Route path='/socialmedia/edit/10' element={<SmEdit10 />} />
+                <Route path='/flyer/edit/1' element={<FlyerEdit1 />} />
+                <Route path='/flyer/edit/2' element={<FlyerEdit2 />} />
+                <Route path='/flyer/edit/3' element={<FlyerEdit3 />} />
+                <Route path='/emailsignature/edit/1' element={<EmailSignaturEdit1 />} />
+                <Route path='/emailsignature/edit/2' element={<EmailSignaturEdit2 />} />
+                <Route path='/envelope/edit/1' element={<EnvelopeEdit1 />} />
+                <Route path='/envelope/edit/2' element={<EnvelopeEdit2 />} />
+                <Route path='/namecard/edit/1' element={<NamecardEdit1 />} />
+                <Route path='/namecard/edit/2' element={<NamecardEdit2 />} />
+                <Route path='/namecard/edit/3' element={<NamecardEdit3 />} />
+                <Route path='/proposal/edit/1' element={<ProposalEdit />} />
+            </Routes>
+        </Router>
     )
 }
 

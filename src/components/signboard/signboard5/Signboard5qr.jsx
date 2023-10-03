@@ -82,7 +82,7 @@ const Signboard5qr = (props) => {
     }, []);
 
     return (
-        <div className='w-[329px] h-[493px] bg-[#f4f4f4] px-[7px] py-[8.62px]'>
+        <div className='w-[329px] h-[493px] bg-[#fff] dark:bg-[#f4f4f4] px-[7px] py-[8.62px]'>
             <div className='flex gap-[3px]'>
                 <div>
                     <div

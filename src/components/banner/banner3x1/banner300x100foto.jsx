@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import RwWhite from '../../../assets/images/raywhite-putih.png';
 import { FaPhone } from 'react-icons/fa';
 import { BiCamera } from 'react-icons/bi';
+import ImageCropPopup from '../../pop-up/ImageCropPopup';
 
 const Banner300x100foto = () => {
     const [profileImage, setProfileImage] = useState(null);
@@ -16,6 +17,7 @@ const Banner300x100foto = () => {
         officeName: 'Ray White Menteng',
         officeWebsite: 'menteng.raywhite.co.id',
     });
+    const [isCropPopupOpen, setIsCropPopupOpen] = useState(false);
 
     const handleEditAndSave = (field, e) => {
         if (e.key === 'Enter') {
@@ -33,21 +35,33 @@ const Banner300x100foto = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setProfileImage(reader.result);
+                openCropPopup();
             };
             reader.readAsDataURL(file);
         }
     };
 
-    // Handler untuk menghapus foto profil
     const handleImageRemove = () => {
         setProfileImage(null);
     };
 
-    // Handler untuk membuka dialog pemilihan berkas ketika tombol "Change Photo" diklik
     const handleImageUploadClick = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click();
         }
+    };
+
+    const openCropPopup = () => {
+        setIsCropPopupOpen(true);
+    };
+
+    const closeCropPopup = () => {
+        setIsCropPopupOpen(false);
+    };
+
+    const handleCropImage = (croppedImage) => {
+        setProfileImage(croppedImage);
+        closeCropPopup();
     };
 
     return (
@@ -56,6 +70,13 @@ const Banner300x100foto = () => {
             <div className="px-12 py-12 text-[#3a3a3a] relative">
                 <div className='flex items-center gap-5'>
                     <div className="relative w-[110px] h-[110px] rounded-full overflow-hidden mb-2">
+                        {isCropPopupOpen && (
+                            <ImageCropPopup
+                                image={profileImage}
+                                onSave={handleCropImage}
+                                onCancel={closeCropPopup}
+                            />
+                        )}
                         <label htmlFor="file-input" className="w-full h-full bg-gray-200 flex items-center justify-center cursor-pointer">
                             {profileImage ? (
                                 <img

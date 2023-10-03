@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import Rw from '../../../assets/images/rw-hd.png'
 import Sb1 from '../../../assets/images/instagram/ig1.jpeg';
@@ -33,27 +34,6 @@ const Signboard1 = (props) => {
         email: 'john.doe@raywhite.co.id'
     });
 
-    const openPopImg = () => {
-        setIsPopImgOpen(true);
-    };
-
-    const closePopImg = () => {
-        setIsPopImgOpen(false);
-    };
-
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
     const handleEditAndSave = (field, e) => {
         if (e.key === 'Enter') {
             setContent((prevContent) => ({
@@ -63,6 +43,17 @@ const Signboard1 = (props) => {
             setIsEditing(false);
         }
     };
+
+    const [selectedImage, setSelectedImage] = useState(null);
+    const handleImageChange = (newImage) => {
+        setSelectedImage(newImage);
+    };
+
+    useEffect(() => {
+        if (props.selectedImage) {
+            setBgImage(props.selectedImage);
+        }
+    })
 
     useEffect(() => {
         if (!bgImage) {
@@ -81,18 +72,16 @@ const Signboard1 = (props) => {
     }, []);
 
     return (
-        <div className='w-[329px] h-[493px] bg-[#f4f4f4] px-[7px] py-[8.62px]'>
+        <div className='w-[329px] h-[493px] bg-[#fff] dark:bg-[#f4f4f4] px-[7px] py-[8.62px]'>
             <div className='flex gap-[3px]'>
                 <div>
                     <div
                         className='w-[202px] bg-slate-100 h-[200px] bg-cover bg-center bg-no-repeat relative'
-                        style={{ backgroundImage: `url(${bgImage})` }}
+                        style={{ backgroundImage: `url(${bgImage || Ig1})` }}
                     >
                         <button
-                            htmlFor="imageUpload"
                             className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                             onClick={props.onClick}
-                            onChange={(e) => handleImageChange(e, props.setBgImage, 'bgImage')}
                         >
                             Change Image
                         </button>
@@ -100,26 +89,24 @@ const Signboard1 = (props) => {
                     <div className='flex mt-[2.3px] gap-[2px]'>
                         <div
                             className='w-[100px] bg-slate-100 h-[84px] bg-cover bg-center bg-no-repeat relative'
-                            style={{ backgroundImage: `url(${bgImage2})` }}
+                            style={{ backgroundImage: `url(${bgImage2 || Ig2})` }}
                         >
                             <button
                                 htmlFor="imageUpload2"
                                 className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                                 onClick={props.onClick}
-                                onChange={(e) => handleImageChange(e, setBgImage2)}
                             >
                                 Change Image
                             </button>
                         </div>
                         <div
                             className='w-[100px] bg-slate-100 h-[84px] bg-cover bg-center bg-no-repeat relative'
-                            style={{ backgroundImage: `url(${bgImage3})` }}
+                            style={{ backgroundImage: `url(${bgImage3 || Ig3})` }}
                         >
                             <button
                                 htmlFor="imageUpload3"
                                 className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                                 onClick={props.onClick}
-                                onChange={(e) => handleImageChange(e, setBgImage3)}
                             >
                                 Change Image
                             </button>
@@ -130,13 +117,12 @@ const Signboard1 = (props) => {
                     <img src={Rw} className='w-[109px] h-[110px]' alt="RayWhite" />
                     <div
                         className='w-[109px] mt-[2.83px] bg-slate-100 h-[173px] bg-cover bg-center bg-no-repeat relative'
-                        style={{ backgroundImage: `url(${bgImage4})` }}
+                        style={{ backgroundImage: `url(${bgImage4 || Ig4})` }}
                     >
                         <button
                             htmlFor="imageUpload2"
                             className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                             onClick={props.onClick}
-                            onChange={(e) => handleImageChange(e, setBgImage4)}
                         >
                             Change Image
                         </button>

@@ -1,9 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from 'react';
 import { BiCamera } from 'react-icons/bi';
-
+import ImageCropPopup from '../../components/pop-up/ImageCropPopup';
+import { BsChevronDown } from 'react-icons/bs';
 const ProfileHeader = () => {
     const [profileImage, setProfileImage] = useState(null);
+    const [isCropPopupOpen, setIsCropPopupOpen] = useState(false);
     const fileInputRef = useRef(null);
 
     const handleImageChange = (e) => {
@@ -12,6 +14,7 @@ const ProfileHeader = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setProfileImage(reader.result);
+                openCropPopup();
             };
             reader.readAsDataURL(file);
         }
@@ -25,6 +28,19 @@ const ProfileHeader = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click();
         }
+    };
+
+    const openCropPopup = () => {
+        setIsCropPopupOpen(true);
+    };
+
+    const closeCropPopup = () => {
+        setIsCropPopupOpen(false);
+    };
+
+    const handleCropImage = (croppedImage) => {
+        setProfileImage(croppedImage);
+        closeCropPopup();
     };
 
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -49,8 +65,20 @@ const ProfileHeader = () => {
 
         localStorage.setItem('theme', activeMode);
     }, [activeMode]);
+
+    const emailUser = sessionStorage.getItem('email');
+    const firstName = sessionStorage.getItem('firstname');
+    const lastName = sessionStorage.getItem('lastname');
+
     return (
         <div className='mt-11 px-7 md:px-0'>
+            {isCropPopupOpen && (
+                <ImageCropPopup
+                    image={profileImage}
+                    onSave={handleCropImage}
+                    onCancel={closeCropPopup}
+                />
+            )}
             <h1 className='text-[#5C5C5C] dark:text-white text-[22px] font-inter font-semibold'>Your Profile</h1>
             <div className='flex  md:gap-4 mt-7 gap-14 md:justify-between items-center'>
                 <div className="md:relative  w-24 h-24 md:w-[104px] md:h-[104px] rounded-full overflow-hidden mb-2">
@@ -86,7 +114,7 @@ const ProfileHeader = () => {
             <div className='flex mt-7 items-center text-[#5C5C5C] dark:text-white justify-between font-inter'>
                 <div className='text-lg'>
                     <h1 className='font-semibold'>Name</h1>
-                    <p className='font-light text-[#bababa] dark:text-white'>Username123</p>
+                    <p className='font-light text-[#bababa] dark:text-white'>{firstName} {lastName}</p>
                 </div>
                 <button className='border font-medium text-sm dark:border-white border-[#5C5C5C] rounded-full w-[151px] h-10'>Edit</button>
             </div>
@@ -94,16 +122,15 @@ const ProfileHeader = () => {
             <div className='flex mt-7 items-center text-[#5C5C5C] dark:text-white justify-between font-inter'>
                 <div className='text-lg'>
                     <h1 className='font-semibold'>Email</h1>
-                    <p className='font-light dark:text-white text-[#bababa] '>Email@gmail.com</p>
+                    <p className='font-light dark:text-white text-[#bababa] '>{emailUser}</p>
                 </div>
             </div>
             <div className="border-b dark:border-white border-[#bababa] border-opacity-50" style={{ height: "0.5px" }}></div>
             <button className='border font-roboto font-medium text-sm mt-7 flex justify-between items-center px-[23px] dark:text-white text-[#5C5C5C] dark:border-white border-[#5C5C5C] rounded-full w-[260px] h-10'><div>
                 Language
             </div>
-                <svg xmlns="http://www.w3.org/2000/svg" className='' width="23" height="19" viewBox="0 0 23 19" fill="none">
-                    <path d="M6.34317 7.75781L4.92896 9.17203L12 16.2431L19.0711 9.17205L17.6569 7.75784L12 13.4147L6.34317 7.75781Z" fill="white" />
-                </svg></button>
+                <BsChevronDown className='text-[#000] font-bold dark:text-[#fff]' />
+            </button>
             <div className='dark:text-white text-[#5C5C5C] mt-7 font-inter'>
                 <h1 className='text-[22px] font-semibold'>Theme</h1>
                 <p className='max-w-[511px] text-base mt-2 font-light'>Choose how you’d like to appear. Select a theme, or sync themes with your system preferences.</p>

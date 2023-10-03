@@ -138,5 +138,19 @@
     }
 }
 
+@media screen and (min-width: 360px) and (max-width: 427px) {
+    .dropown-profile {
+        right: 150px;
+        top: 305px;
+    }
+
+    .notif-dropdown {
+        right: 10px;
+        top: 22%;
+    }
+}
+
+
+
 
 

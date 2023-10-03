@@ -9,7 +9,7 @@ import { FaBath } from 'react-icons/fa6';
 import { FaCar } from 'react-icons/fa';
 import { BiSolidPhoneCall } from 'react-icons/bi'
 import { IoMdMail } from 'react-icons/io'
-import Qr from '../../../assets/images/Qr code.png';
+import Qr from '../../../assets/images/QR code.png';
 
 const Signboard1qr = (props) => {
     const [bgImage, setBgImage] = useState(Sb1)
@@ -82,7 +82,7 @@ const Signboard1qr = (props) => {
     }, []);
 
     return (
-        <div className='w-[329px] h-[493px] bg-[#f4f4f4] px-[7px] py-[8.62px]'>
+        <div className='w-[329px] h-[493px] bg-[#fff] dark:bg-[#f4f4f4] px-[7px] py-[8.62px]'>
             <div className='flex gap-[3px]'>
                 <div>
                     <div

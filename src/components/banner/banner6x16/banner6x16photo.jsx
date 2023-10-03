@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import RwWhite from '../../../assets/images/openhouse.png';
 import { FaPhone } from 'react-icons/fa';
 import { BiCamera } from 'react-icons/bi';
-import QrRw from '../../../assets/images/qr-rw.png';
+import ImageCropPopup from '../../pop-up/ImageCropPopup';
 import LoanMarket from '../../../assets/images/lm-putih.png'
 
 const Banner6x16photo = () => {
@@ -15,7 +15,7 @@ const Banner6x16photo = () => {
         officeName: 'Ray White Menteng',
         officeWebsite: 'menteng.raywhite.co.id',
     });
-
+    const [isCropPopupOpen, setIsCropPopupOpen] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
     const fileInputRef = useRef(null);
 
@@ -35,6 +35,7 @@ const Banner6x16photo = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setProfileImage(reader.result);
+                openCropPopup();
             };
             reader.readAsDataURL(file);
         }
@@ -50,10 +51,30 @@ const Banner6x16photo = () => {
         }
     };
 
+    const openCropPopup = () => {
+        setIsCropPopupOpen(true);
+    };
+
+    const closeCropPopup = () => {
+        setIsCropPopupOpen(false);
+    };
+
+    const handleCropImage = (croppedImage) => {
+        setProfileImage(croppedImage);
+        closeCropPopup();
+    };
+
     return (
         <div className="w-[174px] h-[466px] bg-primary-color relative flex flex-col justify-center items-center">
             <img src={RwWhite} alt="RayWhite" className="absolute w-[85px] right-12 top-0 justify-center max-w-full" />
             <div className="w-[103px] mt-44 h-[103px] rounded-full overflow-hidden">
+                {isCropPopupOpen && (
+                    <ImageCropPopup
+                        image={profileImage}
+                        onSave={handleCropImage}
+                        onCancel={closeCropPopup}
+                    />
+                )}
                 <label htmlFor="file-input" className="w-full h-full bg-gray-200 flex items-center justify-center cursor-pointer">
                     {profileImage ? (
                         <img

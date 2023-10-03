@@ -10,7 +10,7 @@ import { FaCar } from 'react-icons/fa';
 import { BiSolidPhoneCall } from 'react-icons/bi'
 import { IoMdMail } from 'react-icons/io'
 import Lm from '../../../assets/images/lm-biru.png';
-import Qr from '../../../assets/images/QR Code.png';
+import Qr from '../../../assets/images/QR code.png';
 const Signboard7qrlm = (props) => {
     const [bgImage, setBgImage] = useState(Sb1)
     const [bgImage2, setBgImage2] = useState(Sb2)
@@ -81,7 +81,7 @@ const Signboard7qrlm = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <div className='w-[226px] h-[452px] bg-[#f4f4f4]'>
+        <div className='w-[226px] h-[452px] bg-[#fff] dark:bg-[#f4f4f4]'>
             <img src={Rw} alt="Raywhite" className='w-[52px] absolute right-3' />
             <div
                 className='w-full bg-slate-100 h-[249px] bg-cover bg-center bg-no-repeat relative'

@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import RwWhite from '../../../assets/images/raywhite-putih.png';
 import { FaPhone } from 'react-icons/fa';
 import { BiCamera } from 'react-icons/bi';
+import ImageCropPopup from '../../pop-up/ImageCropPopup';
 
 const Banner4x1foto = () => {
     const [profileImage, setProfileImage] = useState(null);
@@ -16,6 +17,7 @@ const Banner4x1foto = () => {
         officeName: 'Ray White Menteng',
         officeWebsite: 'menteng.raywhite.co.id',
     });
+    const [isCropPopupOpen, setIsCropPopupOpen] = useState(false);
 
     const handleEditAndSave = (field, e) => {
         if (e.key === 'Enter') {
@@ -33,6 +35,7 @@ const Banner4x1foto = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setProfileImage(reader.result);
+                openCropPopup();
             };
             reader.readAsDataURL(file);
         }
@@ -48,12 +51,32 @@ const Banner4x1foto = () => {
         }
     };
 
+    const openCropPopup = () => {
+        setIsCropPopupOpen(true);
+    };
+
+    const closeCropPopup = () => {
+        setIsCropPopupOpen(false);
+    };
+
+    const handleCropImage = (croppedImage) => {
+        setProfileImage(croppedImage);
+        closeCropPopup();
+    };
+
     return (
         <div className="w-[1048px] h-[262px] bg-primary-color relative">
             <img src={RwWhite} alt="RayWhite" className="absolute right-12 max-w-full" />
             <div className="px-12 py-4 text-[#3a3a3a] relative">
                 <div className='flex items-center gap-5'>
                     <div className="relative w-[110px] h-[110px] rounded-full overflow-hidden mb-2">
+                        {isCropPopupOpen && (
+                            <ImageCropPopup
+                                image={profileImage}
+                                onSave={handleCropImage}
+                                onCancel={closeCropPopup}
+                            />
+                        )}
                         <label htmlFor="file-input" className="w-full h-full bg-gray-200 flex items-center justify-center cursor-pointer">
                             {profileImage ? (
                                 <img
