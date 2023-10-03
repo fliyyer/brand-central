@@ -9,7 +9,7 @@ import { FaBath } from 'react-icons/fa6';
 import { FaCar } from 'react-icons/fa';
 import { BiSolidPhoneCall } from 'react-icons/bi'
 import { IoMdMail } from 'react-icons/io'
-import Qr from '../../../assets/images/Qr Code.png';
+import Qr from '../../../assets/images/QR code.png';
 import Lm from '../../../assets/images/lm-biru.png';
 
 const Signboard5qrlm = (props) => {
