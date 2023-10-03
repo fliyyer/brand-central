@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Ig5 from '../../assets/images/instagram/Ig5.jpeg';
+import Ig5 from '../../assets/images/instagram/ig5.jpeg';
 import Raywhite from '../../assets/images/raywhite-kuning.png';
 
 const Instagram9 = (props) => {

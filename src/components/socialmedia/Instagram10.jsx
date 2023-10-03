@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Ig5 from "../../assets/images/instagram/Ig5.jpeg";
+import Ig5 from "../../assets/images/instagram/ig5.jpeg";
 import Rwtext from "../../assets/images/rw-text.png";
 const Instagram10 = (props) => {
     const [bgImage, setBgImage] = useState(
