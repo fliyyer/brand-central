@@ -26,7 +26,7 @@ const Banner100x100qrlm = () => {
     };
 
     return (
-        <div className="w-[468px] h-[468px] bg-primary-color relative">
+        <div className="w-[468px] font-lato text-[#3a3a3a] h-[468px] bg-primary-color relative">
             <img
                 src={RwWhite}
                 alt="RayWhite"
@@ -34,7 +34,7 @@ const Banner100x100qrlm = () => {
             />
             <div className="px-8 py-16">
                 <h1
-                    className="text-[68px] font-bold"
+                    className="text-[68px] font-playfair font-bold"
                     contentEditable={true}
                     onBlur={(e) => handleEditAndSave('title', e)}
                     suppressContentEditableWarning={true}

@@ -63,7 +63,6 @@ const BannerEdit1x1 = () => {
         <div className='min-h-screen'>
             <nav className='flex justify-between px-6 lg:px-24 md:py-7 py-5 items-center dark:bg-[#3F4447] shadow-2xl bg-[#fff]'>
                 <img src={brandCentralImage} alt="Brand Central" className="w-40 md:w-auto" />
-                <button className='px-4 md:px-6 w-28 md:w-[178px] h-7 md:h-[40px] text-[#000] bg-primary-color dark:bg-transparent font-medium dark:text-primary-color text-sm md:text-base rounded-[100px] border border-primary-color'>Save Project</button>
             </nav>
             <div className='dark:bg-bg-content bg-[#f2f2f2] bg-cover bg-no-repeat  px-6 lg:px-28 py-7 w-full min-h-screen flex flex-col justify-start items-center'>
                 <Link to='/'>
@@ -76,7 +75,7 @@ const BannerEdit1x1 = () => {
                     <select
                         value={selectedComponent}
                         onChange={(e) => setSelectedComponent(e.target.value)}
-                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#5c5c5c] dark:text-[#fff] border-none w-full lg:w-auto"
+                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#5c5c5c] dark:text-[#fff] border-none w-auto"
                     >
                         <option value="Banner100x100" className='bg-[#fff] dark:bg-text-board-color'>Banner text only</option>
                         <option value="Banner100x100foto" className='bg-[#fff] dark:bg-text-board-color rounded-none'>Banner with Photo</option>

@@ -4,24 +4,20 @@ import BrandCentral from '../../assets/images/logo-brand-central.png'
 import BcLight from '../../assets/images/bc-light.svg';
 
 function PopImg({ onClose, images, onChooseImage }) {
-    const [showImage, setShowImage] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImageId, setSelectedImageId] = useState(null);
 
     const handleClose = () => {
         if (selectedImage) {
             onChooseImage(selectedImage);
         }
-        setShowImage(false);
         onClose();
     };
 
-
-    const handleImageSelect = (image) => {
-        onChooseImage(image);
+    const handleImageSelect = (image, id) => {
         setSelectedImage(image);
+        setSelectedImageId(id);
     };
-
-
 
     const theme = localStorage.getItem('theme') || 'light';
     const brandCentralImage = theme === 'light' ? BcLight : BrandCentral;
@@ -47,14 +43,14 @@ function PopImg({ onClose, images, onChooseImage }) {
                                     src={item.image}
                                     alt={item.title}
                                     className="w-16 md:w-[98px] h-12 md:h-[82px] rounded-md cursor-pointer"
-                                    onClick={() => handleImageSelect(item.image)}
+                                    onClick={() => handleImageSelect(item.image, item.id)}
                                 />
                                 <h1 className="text-sm w-[115px] text-[#5c5c5c] dark:text-[#fff]">{item.title}</h1>
                                 <input
                                     className=""
                                     type="checkbox"
-                                    checked={selectedImage === item.image}
-                                    onChange={() => handleImageSelect(item.image)}
+                                    checked={selectedImageId === item.id}
+                                    onChange={() => handleImageSelect(item.image, item.id)}
                                 />
                             </div>
                         ))}

@@ -42,12 +42,6 @@ const InputLogin = () => {
         }
     };
 
-    useEffect(() => {
-        if (sessionStorage.getItem('token') && sessionStorage.getItem('token') !== 'undefined') {
-            navigate('/');
-        }
-    });
-
     return (
         <div>
             <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">

@@ -1,85 +1,224 @@
-import React, { useState } from 'react';
-import RwWhite from '../../../assets/images/raywhite-putih.png';
-import { FaPhone } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import RwWhite from "../../../assets/images/raywhite-putih.png";
+import RwYellow from "../../../assets/images/raywhite-putih2.png";
+import axios from "axios";
+import TextEditorPopup from "../../pop-up/TextEditorPopup";
+import TitleOptionsPopup from "../../pop-up/TitleOptionsPopup";
+import Call from "../../../assets/images/call.png";
+import { convertTitle } from "../../../utils/optionConvert";
 
 const Banner100x100 = () => {
-    const [isEditing, setIsEditing] = useState(false);
+    const [isNameEditing, setIsNameEditing] = useState(false);
+    const [isMobileEditing, setIsMobileEditing] = useState(false);
+    const [isTitleOptionsOpen, setIsTitleOptionsOpen] = useState(false);
+    const [imageColor, setImageColor] = useState("yellow");
+    const [backgroundColor, setBackgroundColor] = useState("yellow");
     const [content, setContent] = useState({
-        title: 'Dijual',
-        agentName: 'Nama Agent',
-        agentPhone: '0857 1188 0419',
-        agentEmail: 'Email.agent@gmail.com',
-        agentOfficePhone: '(021) 3190 9333',
-        officeName: 'Ray White Menteng',
-        officeWebsite: 'menteng.raywhite.co.id',
+        title: "",
+        agentName: "",
+        agentPhone: "",
+        agentOfficePhone: "",
+        officeName: "",
+        officeWebsite: "",
     });
 
-    const handleEditAndSave = (field, e) => {
-        if (e.key === 'Enter') {
-            setContent((prevContent) => ({
-                ...prevContent,
-                [field]: e.target.textContent,
-            }));
-            setIsEditing(false);
+    useEffect(() => {
+        defaultUser();
+    }, []);
+
+    const defaultUser = async () => {
+        try {
+            const response = await axios.get(
+                "https://brandcentralapi.raywhite.co.id/banner3/create",
+                {
+                    headers: {
+                        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+                    },
+                }
+            );
+
+            if (response.status === 200) {
+                const dataUser = response.data.row;
+                setContent({
+                    title: "Dijual",
+                    agentName: dataUser.agent_name,
+                    agentPhone: dataUser.agent_mobile,
+                    agentOfficePhone: dataUser.agent_phone,
+                    officeName: dataUser.agent_office,
+                    officeWebsite: dataUser.website,
+                });
+            } else {
+                console.error("Eror ambil data:", response);
+            }
+        } catch (error) {
+            console.error("Terjadi kesalahan:", error);
         }
     };
 
+    const handleNameEdit = () => {
+        setIsNameEditing(true);
+    };
+
+    const handleNameSave = (newAgentName) => {
+        setIsNameEditing(false);
+        const uppercaseName = newAgentName.toUpperCase();
+        setContent((prevContent) => ({
+            ...prevContent,
+            agentName: uppercaseName,
+        }));
+    };
+
+
+    const handleNameCancel = () => {
+        setIsNameEditing(false);
+    };
+
+    const handleMobileEdit = () => {
+        setIsMobileEditing(true);
+    };
+
+    const handleMobileSave = (newMobile) => {
+        setIsMobileEditing(false);
+        setContent((prevContent) => ({
+            ...prevContent,
+            agentPhone: newMobile,
+        }));
+    };
+
+    const handleMobileCancel = () => {
+        setIsMobileEditing(false);
+    };
+
+    const handleTitleEdit = () => {
+        setIsTitleOptionsOpen(true);
+    };
+
+    const handleTitleSelect = (newTitle) => {
+        setIsTitleOptionsOpen(false);
+        setContent((prevContent) => ({
+            ...prevContent,
+            title: newTitle,
+        }));
+    };
+
+    const handleTitleCancel = () => {
+        setIsTitleOptionsOpen(false);
+    };
+
+    const saveDataToAPI = async () => {
+        try {
+            let convertedTitle = convertTitle(content.title);
+            const dataToBeSaved = {
+                property_type: convertedTitle,
+                agent_name: content.agentName,
+                agent_mobile: content.agentPhone,
+                color: imageColor,
+            };
+
+            const response = await axios.post(
+                "https://brandcentralapi.raywhite.co.id/banner3/save",
+                dataToBeSaved,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+                    },
+                }
+            );
+
+            if (response.status === 200) {
+                console.log("Data berhasil disimpan");
+            } else {
+                console.error("Gagal menyimpan data");
+            }
+        } catch (error) {
+            console.error("Terjadi kesalahan:", error);
+        }
+    };
+
+    const handleBackgroundColorChange = (event) => {
+        const selectedColor = event.target.value;
+        setBackgroundColor(selectedColor);
+        const newImageColor = selectedColor === "white" ? "white" : "yellow";
+        setImageColor(newImageColor);
+    };
+
     return (
-        <div className="w-[468px] h-[468px] bg-primary-color relative">
-            <img src={RwWhite} alt="RayWhite" className="absolute right-8 max-w-full" />
-            <div className="px-8 py-28 relative">
-                <h1
-                    className="text-[68px] font-bold"
-                    contentEditable={true}
-                    onBlur={(e) => handleEditAndSave('title', e)}
-                    suppressContentEditableWarning={true}
-                >
-                    {content.title}
-                </h1>
-                <p
-                    className="text-[29px] font-bold"
-                    contentEditable={true}
-                    onBlur={(e) => handleEditAndSave('agentName', e)}
-                    suppressContentEditableWarning={true}
-                >
-                    {content.agentName}
-                </p>
-                <p
-                    className="text-[29px] font-bold"
-                    contentEditable={true}
-                    onBlur={(e) => handleEditAndSave('agentPhone', e)}
-                    suppressContentEditableWarning={true}
-                >
-                    {content.agentPhone}
-                </p>
-                <p
-                    className="text-[15px] font-bold"
-                    contentEditable={true}
-                    onBlur={(e) => handleEditAndSave('agentEmail', e)}
-                    suppressContentEditableWarning={true}
-                >
-                    {content.agentEmail}
-                </p>
-                <p className="flex items-center gap-2 text-[30px] font-bold" >
-                    <FaPhone className="" />
-                    <span contentEditable={true} onBlur={(e) => handleEditAndSave('agentOfficePhone', e)} suppressContentEditableWarning={true}>{content.agentOfficePhone}</span>
-                </p>
-                <p
-                    className="text-[15px] font-bold mt-4"
-                    contentEditable={true}
-                    onBlur={(e) => handleEditAndSave('officeName', e)}
-                    suppressContentEditableWarning={true}
-                >
-                    {content.officeName}
-                </p>
-                <p
-                    className="text-[15px] font-bold"
-                    contentEditable={true}
-                    onBlur={(e) => handleEditAndSave('officeWebsite', e)}
-                    suppressContentEditableWarning={true}
-                >
-                    {content.officeWebsite}
-                </p>
+        <div className="flex flex-col items-end justify-center">
+            <div className={`w-[468px] h-[468px] ${imageColor === "yellow" ? "bg-primary-color text-[#3a3a3a]" : "bg-[#fff] text-[#595A5C]"} relative`}>
+                <img
+                    src={imageColor === "yellow" ? RwWhite : RwYellow}
+                    alt="RayWhite"
+                    className="absolute right-8 max-w-full"
+                />
+                <div className="px-8 py-28 relative">
+                    {isTitleOptionsOpen && (
+                        <TitleOptionsPopup
+                            isOpen={isTitleOptionsOpen}
+                            onSelect={handleTitleSelect}
+                            onClose={handleTitleCancel}
+                        />
+                    )}
+                    <h1
+                        className="text-[68px] font-playfair font-bold cursor-pointer"
+                        onClick={handleTitleEdit}
+                    >
+                        {content.title}
+                    </h1>
+                    {isNameEditing && (
+                        <TextEditorPopup
+                            initialValue={content.agentName}
+                            onSave={handleNameSave}
+                            onCancel={handleNameCancel}
+                        />
+                    )}
+                    <h1 className="text-[30px] uppercase font-lato font-bold cursor-pointer"
+                        onClick={handleNameEdit}>{content.agentName}</h1>
+                    {isMobileEditing && (
+                        <TextEditorPopup
+                            initialValue={content.agentPhone}
+                            onSave={handleMobileSave}
+                            onCancel={handleMobileCancel}
+                        />
+                    )}
+                    <p
+                        className="text-[29px] font-bold font-lato cursor-pointer"
+                        onClick={handleMobileEdit}
+                    >
+                        {content.agentPhone || "0812 1234 5678"}
+                    </p>
+                    <p className="text-[15px] font-bold">{content.agentEmail}</p>
+                    <p className="flex items-center gap-2 text-[30px] font-lato font-bold">
+                        <img src={Call} className="w-6 mt-1" alt="phone" />
+                        <span>{content.agentOfficePhone || "(62-21) 2788 9777"}</span>
+                    </p>
+                    <p className="text-[15px] font-lato font-bold mt-4">{content.officeName || "Ray White Indonesia"}</p>
+                    <p className="text-[15px] font-lato font-bold">{content.officeWebsite || "raywhite.co.id"}</p>
+                </div>
+            </div>
+            <div className="flex items-end" style={{ zIndex: 1 }}>
+                <div className="flex absolute top-1 right-0 items-center">
+                    <select
+                        id="backgroundColorSelect"
+                        value={backgroundColor}
+                        onChange={handleBackgroundColorChange}
+                        className="text-[#fff] cursor-pointer text-sm font-medium bg-transparent rounded-sm px-2 py-1 relative"
+                    >
+                        <option value="white" className='bg-[#fff] dark:bg-text-board-color rounded-none'>
+                            White
+                        </option>
+                        <option value="yellow" className='bg-[#fff] dark:bg-text-board-color rounded-none'>
+                            Yellow
+                        </option>
+                    </select>
+                    {backgroundColor === 'white' && (
+                        <div className="w-4 h-4 absolute right-2 top-1/2 mr-20 transform -translate-y-1/2 bg-white"></div>
+                    )}
+                    {backgroundColor === 'yellow' && (
+                        <div className="w-4 h-4 absolute right-2 top-1/2 mr-20 transform -translate-y-1/2 bg-yellow-500"></div>
+                    )}
+                </div>
+                <button onClick={saveDataToAPI} className='px-4 md:px-6 w-28 md:w-[168px] h-7 md:h-[40px] mt-9 text-[#000] bg-primary-color dark:bg-transparent font-medium dark:text-primary-color text-sm md:text-base rounded-lg dark:hover:bg-[#3a3a3a] border border-primary-color'>Save Project</button>
             </div>
         </div>
     );

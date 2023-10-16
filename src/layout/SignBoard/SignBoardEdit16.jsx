@@ -97,7 +97,6 @@ const SignBoardEdit16 = () => {
                         <option value="Sign Board text only" className='bg-[#fff] dark:bg-text-board-color'>Sign Board text only</option>
                         <option value="Sign Board Qr" className='bg-[#fff] dark:bg-text-board-color rounded-none'>Sign Board Qr</option>
                         <option value="Sign Board with Loan Market" className='bg-[#fff] dark:bg-text-board-color rounded-none'>Sign Board Loan Market</option>
-                        <option value="Sign Board Qr with Loan Market" className='bg-[#fff] dark:bg-text-board-color rounded-none'>Sign Board Qr with Loan Market</option>
                     </select>
                     {renderSelectedComponent()}
                 </div>

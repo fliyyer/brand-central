@@ -27,10 +27,9 @@ const Namecard1 = () => {
 
     return (
         <div>
-            <div className='w-[440px] bg-[#fff] h-[269px]'>
+            <div className='w-[440px] bg-[#fff] px-[37.7px] h-[269px]'>
                 <img src={Rw} alt="Raywhite" className=' absolute right-8' />
-                <button className='border border-[#3a3a3a] gap-[4.6px] font-poppins text-[#3a3a3a] flex items-center justify-center rounded-[57px] px-2 absolute top-28 left-16 py-1 text-sm font-medium'>
-                    <GrAddCircle />Add Image</button>
+                <h1 className='absolute bottom-80'>Ray White Indonesia</h1>
             </div>
             <div className='w-[440px] text-[#5F5C60] py-[22px] px-[37.7px] mt-[22px] bg-[#fff] h-[269px]'>
                 <h1 className='font-lato  text-[20.6px] font-medium leading-[34.78px] tracking-[0.178px]' contentEditable={true} onBlur={(e) => handleEditAndSave('name', e)} suppressContentEditableWarning={true}>{content.name}</h1>

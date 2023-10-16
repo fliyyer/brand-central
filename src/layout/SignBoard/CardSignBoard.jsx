@@ -1,10 +1,17 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom';
 
 const CardSignBoard = (props) => {
-    const { title, img, width, onOpenPopup } = props
+    const { title, img, width, onOpenPopup, to } = props;
+    const navigate = useNavigate();
     const handleCreateClick = () => {
-        onOpenPopup();
+        if (onOpenPopup) {
+            onOpenPopup();
+        }
+        if (to) {
+            navigate(to)
+        }
     };
 
     return (
@@ -18,7 +25,7 @@ const CardSignBoard = (props) => {
                 <h1 className='font-roboto text-sm font-medium leading-5 text-[#3a3a3a]'>{title}</h1>
             </div>
             <img className={`my-auto ${width}`} src={img} alt="Sign Board 8x6" />
-            <button onClick={handleCreateClick} className='bg-[#d5d5d5] flex w-[95px] p-[4.5px] justify-center gap-[4.5px] rounded-[4px] mt-2 items-center'>
+            <button onClick={handleCreateClick || onClick} className='bg-[#d5d5d5] flex w-[95px] p-[4.5px] justify-center gap-[4.5px] rounded-[4px] mt-2 items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                     <path d="M8.45876 4.31641L7.66513 5.11376L9.50464 6.94468L1.85181 6.95238L1.85294 8.07738L9.4848 8.0697L7.67628 9.88671L8.47364 10.6803L11.6482 7.49093L8.45876 4.31641Z" fill="white" />
                 </svg>
@@ -32,7 +39,8 @@ CardSignBoard.propTypes = {
     title: propTypes.string,
     img: propTypes.string,
     width: propTypes.string,
-    onOpenPopup: propTypes.func
+    onOpenPopup: propTypes.func,
+    to: propTypes.string,
 }
 
 export default CardSignBoard

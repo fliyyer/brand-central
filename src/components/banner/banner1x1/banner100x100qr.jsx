@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import RwWhite from '../../../assets/images/raywhite-putih.png';
-import { FaPhone } from 'react-icons/fa';
+import Call from '../../../assets/images/call.png';
 import qrBanner from '../../../assets/images/qr-banner100.png'
 
 const Banner100x100qr = () => {
@@ -26,11 +26,11 @@ const Banner100x100qr = () => {
     };
 
     return (
-        <div className="relative w-[468px] h-[468px] bg-primary-color">
+        <div className="relative w-[468px] font-lato text-[#3a3a3a] h-[468px] bg-primary-color">
             <img src={RwWhite} alt="RayWhite" className="absolute top-0 right-8 max-w-full h-auto" />
             <div className="px-8 py-28 relative">
                 <h1
-                    className="text-[68px] font-bold"
+                    className="text-[68px] font-playfair font-bold"
                     contentEditable={true}
                     onBlur={(e) => handleEditAndSave('title', e)}
                     suppressContentEditableWarning={true}
@@ -38,7 +38,7 @@ const Banner100x100qr = () => {
                     {content.title}
                 </h1>
                 <p
-                    className="text-[29px] font-bold"
+                    className="text-[29px] uppercase font-bold"
                     contentEditable={true}
                     onBlur={(e) => handleEditAndSave('agentName', e)}
                     suppressContentEditableWarning={true}
@@ -62,7 +62,7 @@ const Banner100x100qr = () => {
                     {content.agentEmail}
                 </p>
                 <p className="flex items-center gap-2 text-[30px] font-bold" >
-                    <FaPhone className="" />
+                    <img src={Call} alt="Phone" />
                     <span contentEditable={true} onBlur={(e) => handleEditAndSave('agentOfficePhone', e)} suppressContentEditableWarning={true}>{content.agentOfficePhone}</span>
                 </p>
                 <p

@@ -14,6 +14,7 @@ export default {
         'calligraft': ['Calligraffitti', 'cursive'],
         'lato': ['Lato', 'sans'],
         'source-sans' : ['Source Sans 3', 'sans-serif'],
+        'playfair' : ['Playfair Display', 'serif'],
       },
       colors: {
         'primary-color': '#FFE512',

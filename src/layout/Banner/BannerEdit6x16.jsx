@@ -6,12 +6,15 @@ import { BiChevronLeft } from 'react-icons/bi';
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
 import Banner6x16qr from '../../components/banner/banner6x16/banner6x16qr';
 import Banner6x16photo from '../../components/banner/banner6x16/banner6x16photo';
+import Banner6x16 from '../../components/banner/banner6x16/banner6x16';
 
 const BannerEdit6x16 = () => {
-    const [selectedComponent, setSelectedComponent] = useState('Banner6x16qr');
+    const [selectedComponent, setSelectedComponent] = useState('Banner6x16');
     const [zoom, setZoom] = useState(1);
     const renderSelectedComponent = () => {
         switch (selectedComponent) {
+            case 'Banner6x16':
+                return <Banner6x16 />;
             case 'Banner6x16qr':
                 return <Banner6x16qr />;
             case 'Banner6x16photo':
@@ -51,10 +54,11 @@ const BannerEdit6x16 = () => {
                     <select
                         value={selectedComponent}
                         onChange={(e) => setSelectedComponent(e.target.value)}
-                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#5c5c5c] dark:text-[#fff] border-none w-full lg:w-auto"
+                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#5c5c5c] dark:text-[#fff] border-none w-auto"
                     >
+                        <option value="Banner6x16" className='bg-[#fff] dark:bg-text-board-color'>X Banner with Photo</option>
                         <option value="Banner6x16qr" className='bg-[#fff] dark:bg-text-board-color'>X Banner with QR code</option>
-                        <option value="Banner6x16photo" className='bg-[#fff] dark:bg-text-board-color rounded-none'>X Banner photo with Loan Market</option>
+                        <option value="Banner6x16photo" className='bg-[#fff] dark:bg-text-board-color rounded-none'>X Banner Photo with LM</option>
                     </select>
                     {renderSelectedComponent()}
                 </div>

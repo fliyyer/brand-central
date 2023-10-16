@@ -46,10 +46,10 @@ const SignBoard = () => {
                     <CardSignBoard title="Sign Board 8 x 12 L" img={SB_8x12l} width='w-[191px] h-[126px]' onOpenPopup={() => openPopup('/sign-board/edit10')} />
                     <CardSignBoard title="Sign Board 8 x 12 V2" img={SB_8x12v2} width='w-[137px] h-[195px]' onOpenPopup={() => openPopup('/sign-board/edit11')} />
                     <CardSignBoard title="Sign Board 8 x 12 V2 L" img={SB_8x12v2l} width='w-[231px] h-[164px]' onOpenPopup={() => openPopup('/sign-board/edit12')} />
-                    <CardSignBoard title="Sign board 30 x 40 cm" img={SB_30x40} width='w-[146px] h-[195px]' onOpenPopup={() => openPopup('/sign-board/edit13')} />
-                    <CardSignBoard title="Sign Board 50 x 30 cm" img={SB_50x40} width='w-[212px] h-[170px]' onOpenPopup={() => openPopup('/sign-board/edit14')} />
-                    <CardSignBoard title="Sign Board 60 x 80 cm" img={SB_60x80} width='w-[142px] h-[189px]' onOpenPopup={() => openPopup('/sign-board/edit15')} />
-                    <CardSignBoard title="Sign Board 60 x 60 cm" img={SB_60x60} width='w-[189px] h-[189px]' onOpenPopup={() => openPopup('/sign-board/edit16')} />
+                    <CardSignBoard title="Sign board 30 x 40 cm" img={SB_30x40} width='w-[146px] h-[195px]' to='/sign-board/edit13' />
+                    <CardSignBoard title="Sign Board 50 x 40 cm" img={SB_50x40} width='w-[212px] h-[170px]' to='/sign-board/edit14' />
+                    <CardSignBoard title="Sign Board 60 x 80 cm" img={SB_60x80} width='w-[142px] h-[189px]' to='/sign-board/edit15' />
+                    <CardSignBoard title="Sign Board 60 x 60 cm" img={SB_60x60} width='w-[189px] h-[189px]' to='/sign-board/edit16' />
                 </div>
             </div>
             {isPopupOpen && <Popup onClose={closePopup} to={popupTo} />}

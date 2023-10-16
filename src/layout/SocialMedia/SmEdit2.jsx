@@ -8,9 +8,40 @@ import Instagram2 from '../../components/socialmedia/Instagram2';
 import { listingImages } from '../../utils/ListingImg';
 import PopImg from '../../components/pop-up/PopImg';
 const SmEdit2 = () => {
-    const [selectedComponent, setSelectedComponent] = useState('Sign Board text only');
     const [zoom, setZoom] = useState(1);
-    const [bgImage, setBgImage] = useState('')
+    const [bgImage1, setBgImage1] = useState('');
+    const [bgImage2, setBgImage2] = useState('');
+    const [bgImage3, setBgImage3] = useState('');
+    const [selectedBgImage, setSelectedBgImage] = useState(null);
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
+    };
+    const openPopImg1 = () => {
+        setIsPopImgOpen(true);
+        setSelectedBgImage(1);
+    };
+
+    const openPopImg2 = () => {
+        setIsPopImgOpen(true);
+        setSelectedBgImage(2);
+    };
+
+    const openPopImg3 = () => {
+        setIsPopImgOpen(true);
+        setSelectedBgImage(3);
+    };
+
+    const handleBgImageChange = (selectedImage) => {
+        if (selectedBgImage === 1) {
+            setBgImage1(selectedImage);
+        } else if (selectedBgImage === 2) {
+            setBgImage2(selectedImage);
+        } else if (selectedBgImage === 3) {
+            setBgImage3(selectedImage);
+        }
+        closePopImg();
+    };
     const setZoomByScreenWidth = () => {
         if (window.innerWidth <= 760) {
             setZoom(0.8);
@@ -37,15 +68,6 @@ const SmEdit2 = () => {
         transformOrigin: 'center center',
     }
 
-    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
-    const openPopImg = () => {
-        setIsPopImgOpen(true);
-    };
-
-    const closePopImg = () => {
-        setIsPopImgOpen(false);
-    };
-
     const theme = localStorage.getItem('theme') || 'light';
     const brandCentralImage = theme === 'light' ? BcLight : BrandCentral;
 
@@ -56,10 +78,7 @@ const SmEdit2 = () => {
                     <PopImg
                         onClose={closePopImg}
                         images={listingImages}
-                        onChooseImage={(selectedImage) => {
-                            console.log('Selected Image:', selectedImage);
-                            closePopImg();
-                        }}
+                        onChooseImage={handleBgImageChange}
                     />
                 )}
             </div>
@@ -75,7 +94,7 @@ const SmEdit2 = () => {
                     </button>
                 </Link>
                 <div className='my-auto' style={zoomStyle}>
-                    <Instagram2 onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />
+                    <Instagram2 onClick={openPopImg1} onClick2={openPopImg2} onClick3={openPopImg3} bgImage={bgImage1} bgImage2={bgImage2} bgImage3={bgImage3} />
                 </div>
                 <div className='mb-4 flex items-center justify-center'>
                     <button onClick={handleZoomOut} className="text-sm w-[15px] bg-transparent py-10 text-[#5c5c5c] dark:text-white">

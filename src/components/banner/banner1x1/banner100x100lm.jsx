@@ -26,11 +26,11 @@ const Banner100x100lm = () => {
     };
 
     return (
-        <div className="relative w-[468px] h-[468px] bg-primary-color">
+        <div className="relative w-[468px] font-lato text-[#3a3a3a] h-[468px] bg-primary-color">
             <img src={RwWhite} alt="RayWhite" className="absolute top-0 right-8 max-w-full h-auto" />
             <div className="px-8 py-28 relative">
                 <h1
-                    className="text-[68px] font-bold"
+                    className="text-[68px] font-playfair font-bold"
                     contentEditable={true}
                     onBlur={(e) => handleEditAndSave('title', e)}
                 >

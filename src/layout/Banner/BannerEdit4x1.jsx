@@ -79,7 +79,7 @@ const BannerEdit4x1 = () => {
                     <select
                         value={selectedComponent}
                         onChange={(e) => setSelectedComponent(e.target.value)}
-                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#fff] border-none w-full lg:w-auto"
+                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#fff] border-none w-auto"
                     >
                         <option value="Banner400x100" className='bg-text-board-color'>Banner text only</option>
                         <option value="Banner400x100foto" className='bg-text-board-color rounded-none'>Banner with Photo</option>

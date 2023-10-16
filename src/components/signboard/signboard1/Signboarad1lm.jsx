@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Rw from '../../../assets/images/rw-hd.png'
 import Sb1 from '../../../assets/images/instagram/ig1.jpeg';
 import Sb2 from '../../../assets/images/instagram/ig2.jpeg';
@@ -12,11 +12,10 @@ import { IoMdMail } from 'react-icons/io'
 import Lm from '../../../assets/images/lm-biru.png';
 
 const Signboard1lm = (props) => {
-    const [bgImage, setBgImage] = useState(Sb1)
-    const [bgImage2, setBgImage2] = useState(Sb2)
-    const [bgImage3, setBgImage3] = useState(Sb3)
-    const [bgImage4, setBgImage4] = useState(Sb4)
-    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const [bgImage, setBgImage] = useState(props.bgImage);
+    const [bgImage2, setBgImage2] = useState(props.bgImage2);
+    const [bgImage3, setBgImage3] = useState(props.bgImage3);
+    const [bgImage4, setBgImage4] = useState(props.bgImage4);
     const [content, setContent] = useState({
         bed: '2',
         bath: '2',
@@ -34,27 +33,6 @@ const Signboard1lm = (props) => {
         email: 'john.doe@raywhite.co.id'
     });
 
-    const openPopImg = () => {
-        setIsPopImgOpen(true);
-    };
-
-    const closePopImg = () => {
-        setIsPopImgOpen(false);
-    };
-
-    const handleImageChange = (event, setImage, imageKey) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const uploadedImage = e.target.result;
-                setImage(uploadedImage);
-                localStorage.setItem(imageKey, uploadedImage);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
     const handleEditAndSave = (field, e) => {
         if (e.key === 'Enter') {
             setContent((prevContent) => ({
@@ -65,35 +43,17 @@ const Signboard1lm = (props) => {
         }
     };
 
-    useEffect(() => {
-        if (!bgImage) {
-            setBgImage(Sb1);
-        }
-        if (!bgImage2) {
-            setBgImage2(Sb2);
-        }
-        if (!bgImage3) {
-            setBgImage3(Sb3);
-        }
-        if (!bgImage4) {
-            setBgImage3(Sb4);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     return (
         <div className='w-[329px] h-[493px] bg-[#fff] dark:bg-[#f4f4f4] px-[7px] py-[8.62px]'>
             <div className='flex gap-[3px]'>
                 <div>
                     <div
                         className='w-[202px] bg-slate-100 h-[200px] bg-cover bg-center bg-no-repeat relative'
-                        style={{ backgroundImage: `url(${bgImage})` }}
+                        style={{ backgroundImage: `url(${props.bgImage || Sb1})` }}
                     >
                         <button
-                            htmlFor="imageUpload"
                             className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                             onClick={props.onClick}
-                            onChange={(e) => handleImageChange(e, props.setBgImage, 'bgImage')}
                         >
                             Change Image
                         </button>
@@ -101,26 +61,22 @@ const Signboard1lm = (props) => {
                     <div className='flex mt-[2.3px] gap-[2px]'>
                         <div
                             className='w-[100px] bg-slate-100 h-[84px] bg-cover bg-center bg-no-repeat relative'
-                            style={{ backgroundImage: `url(${bgImage2})` }}
+                            style={{ backgroundImage: `url(${props.bgImage2 || Sb2})` }}
                         >
                             <button
-                                htmlFor="imageUpload2"
                                 className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                                onClick={props.onClick}
-                                onChange={(e) => handleImageChange(e, setBgImage2)}
+                                onClick={props.onClick2}
                             >
                                 Change Image
                             </button>
                         </div>
                         <div
                             className='w-[100px] bg-slate-100 h-[84px] bg-cover bg-center bg-no-repeat relative'
-                            style={{ backgroundImage: `url(${bgImage3})` }}
+                            style={{ backgroundImage: `url(${props.bgImage3 || Sb3})` }}
                         >
                             <button
-                                htmlFor="imageUpload3"
                                 className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                                onClick={props.onClick}
-                                onChange={(e) => handleImageChange(e, setBgImage3)}
+                                onClick={props.onClick3}
                             >
                                 Change Image
                             </button>
@@ -131,13 +87,11 @@ const Signboard1lm = (props) => {
                     <img src={Rw} className='w-[109px] h-[110px]' alt="RayWhite" />
                     <div
                         className='w-[109px] mt-[2.83px] bg-slate-100 h-[173px] bg-cover bg-center bg-no-repeat relative'
-                        style={{ backgroundImage: `url(${bgImage4})` }}
+                        style={{ backgroundImage: `url(${props.bgImage4 || Sb4})` }}
                     >
                         <button
-                            htmlFor="imageUpload2"
                             className="border text-[6px] text-center font-roboto w-[47px] py-[2.75px] border-[#fff] bg-[#fff] rounded-[57px] text-[#3a3a3a] font-medium absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                            onClick={props.onClick}
-                            onChange={(e) => handleImageChange(e, setBgImage4)}
+                            onClick={props.onClick4}
                         >
                             Change Image
                         </button>

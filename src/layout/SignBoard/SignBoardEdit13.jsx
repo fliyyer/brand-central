@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import BrandCentral from '../../assets/images/logo-brand-central.png';
 import BcLight from '../../assets/images/bc-light.svg';
@@ -14,8 +14,23 @@ const SignBoardEdit13 = () => {
     const [selectedComponent, setSelectedComponent] = useState('Sign Board text only');
     const [zoom, setZoom] = useState(1);
     const [bgImage, setBgImage] = useState('')
+    const setZoomByScreenWidth = () => {
+        if (window.innerWidth <= 760) {
+            setZoom(0.9);
+        } else {
+            setZoom(1.0);
+        }
+    };
+
+    useEffect(() => {
+        setZoomByScreenWidth();
+        window.addEventListener('resize', setZoomByScreenWidth);
+        return () => {
+            window.removeEventListener('resize', setZoomByScreenWidth);
+        };
+    }, []);
     const handleZoomIn = () => {
-        setZoom(Math.min(zoom + 0.1, 1.3));
+        setZoom(Math.min(zoom + 0.2, 1.3));
     };
     const handleZoomOut = () => {
         setZoom(Math.max(zoom - 0.1, 0.3));
@@ -73,11 +88,11 @@ const SignBoardEdit13 = () => {
                         <p>Back</p>
                     </button>
                 </Link>
-                <div className='my-16' style={zoomStyle}>
+                <div className='mt-16 md:my-16' style={zoomStyle}>
                     <select
                         value={selectedComponent}
                         onChange={(e) => setSelectedComponent(e.target.value)}
-                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#5c5c5c] dark:text-[#fff] border-none w-full lg:w-auto"
+                        className="py-2 mb-2 text-sm font-medium bg-transparent leading-[20px] text-[#5c5c5c] dark:text-[#fff] border-none w-auto"
                     >
                         <option value="Sign Board text only" className='bg-[#fff] dark:bg-text-board-color'>Sign Board text only</option>
                         <option value="Sign Board Qr" className='bg-[#fff] dark:bg-text-board-color rounded-none'>Sign Board Qr</option>

@@ -10,12 +10,54 @@ import { listingImages } from '../../utils/ListingImg';
 import Signboard1qr from '../../components/signboard/signboard1/Signboard1qr';
 import Signboard1lm from '../../components/signboard/signboard1/Signboarad1lm';
 import Signboard1qrlm from '../../components/signboard/signboard1/Signboard1qrlm';
+import { useAuthentication } from '../../hooks/useAuthentication';
 
 const SignBoardEdit1 = () => {
+    useAuthentication();
     const [selectedComponent, setSelectedComponent] = useState('Sign Board text only');
     const [zoom, setZoom] = useState(1);
-    const [bgImage, setBgImage] = useState('')
-    const [bgImage2, setBgImage2] = useState('')
+    const [bgImage1, setBgImage1] = useState('');
+    const [bgImage2, setBgImage2] = useState('');
+    const [bgImage3, setBgImage3] = useState('');
+    const [bgImage4, setBgImage4] = useState('');
+    const [selectedBgImage, setSelectedBgImage] = useState(null);
+    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
+    const closePopImg = () => {
+        setIsPopImgOpen(false);
+    };
+    const openPopImg1 = () => {
+        setIsPopImgOpen(true);
+        setSelectedBgImage(1);
+    };
+
+    const openPopImg2 = () => {
+        setIsPopImgOpen(true);
+        setSelectedBgImage(2);
+    };
+
+    const openPopImg3 = () => {
+        setIsPopImgOpen(true);
+        setSelectedBgImage(3);
+    };
+
+    const openPopImg4 = () => {
+        setIsPopImgOpen(true);
+        setSelectedBgImage(4);
+    }
+
+    const handleBgImageChange = (selectedImage) => {
+        if (selectedBgImage === 1) {
+            setBgImage1(selectedImage);
+        } else if (selectedBgImage === 2) {
+            setBgImage2(selectedImage);
+        } else if (selectedBgImage === 3) {
+            setBgImage3(selectedImage);
+        } else if (selectedBgImage === 4) {
+            setBgImage4(selectedImage);
+        }
+        closePopImg();
+    };
+
     const handleZoomIn = () => {
         setZoom(Math.min(zoom + 0.1, 1.3));
     };
@@ -30,29 +72,16 @@ const SignBoardEdit1 = () => {
     const renderSelectedComponent = () => {
         switch (selectedComponent) {
             case 'Sign Board text only':
-                return <Signboard1 onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} selectedImage={bgImage} selectedImage2={bgImage2} />;
+                return <Signboard1 onClick={openPopImg1} onClick2={openPopImg2} onClick3={openPopImg3} bgImage={bgImage1} bgImage2={bgImage2} bgImage3={bgImage3} onClick4={openPopImg4} bgImage4={bgImage4} />;
             case 'Sign Board QR':
-                return <Signboard1qr onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />;
+                return <Signboard1qr onClick={openPopImg1} onClick2={openPopImg2} onClick3={openPopImg3} bgImage={bgImage1} bgImage2={bgImage2} bgImage3={bgImage3} onClick4={openPopImg4} bgImage4={bgImage4} />;
             case 'Sign Board Loan Market':
-                return <Signboard1lm onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />;
+                return <Signboard1lm onClick={openPopImg1} onClick2={openPopImg2} onClick3={openPopImg3} bgImage={bgImage1} bgImage2={bgImage2} bgImage3={bgImage3} onClick4={openPopImg4} bgImage4={bgImage4} />;
             case 'Sign Board Qr with Loan Market':
-                return <Signboard1qrlm onClick={openPopImg} bgImage={bgImage} setBgImage={setBgImage} />;
+                return <Signboard1qrlm onClick={openPopImg1} onClick2={openPopImg2} onClick3={openPopImg3} bgImage={bgImage1} bgImage2={bgImage2} bgImage3={bgImage3} onClick4={openPopImg4} bgImage4={bgImage4} />;
             default:
                 return null;
         }
-    };
-
-    const [isPopImgOpen, setIsPopImgOpen] = useState(false);
-    const openPopImg = () => {
-        setIsPopImgOpen(true);
-    };
-
-    const closePopImg = () => {
-        setIsPopImgOpen(false);
-    };
-
-    const handleImageChange = (newImage) => {
-        setBgImage(newImage);
     };
 
     const theme = localStorage.getItem('theme') || 'light';
@@ -65,7 +94,7 @@ const SignBoardEdit1 = () => {
                     <PopImg
                         onClose={closePopImg}
                         images={listingImages}
-                        onChooseImage={handleImageChange}
+                        onChooseImage={handleBgImageChange}
                     />
                 )}
             </div>

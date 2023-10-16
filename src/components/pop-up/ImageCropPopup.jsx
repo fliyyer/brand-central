@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import AvatarEditor from 'react-avatar-editor';
+import Avatar from 'react-avatar-edit';
 
 const ImageCropPopup = ({ image, onSave, onCancel }) => {
-    const [editor, setEditor] = useState(null);
-    const [zoom, setZoom] = useState(1);
+    const [preview, setPreview] = useState(null);
 
-    const handleSave = () => {
-        if (editor) {
-            const croppedImage = editor.getImageScaledToCanvas().toDataURL();
-            onSave(croppedImage);
-        }
-    };
-
-    const handleZoomChange = (e) => {
-        const newZoom = parseFloat(e.target.value);
-        setZoom(newZoom);
+    const handleSave = (croppedImage) => {
+        setPreview(croppedImage);
     };
 
     return (
@@ -23,33 +14,19 @@ const ImageCropPopup = ({ image, onSave, onCancel }) => {
                 {image && (
                     <>
                         <div className="mb-4">
-                            <AvatarEditor
-                                ref={(ref) => setEditor(ref)}
-                                image={image}
+                            <Avatar
                                 width={330}
-                                height={300}
-                                border={10}
-                                color={[255, 255, 255, 0.6]}
-                                scale={zoom}
-                            />
-                        </div>
-                        <div className="mb-4 flex space-x-3 items-center justify-center">
-                            <label className="block text-sm font-medium text-text-board-color">
-                                Zoom:
-                            </label>
-                            <input
-                                type="range"
-                                min="1"
-                                max="3"
-                                step="0.01"
-                                value={zoom}
-                                onChange={handleZoomChange}
+                                height={330}
+                                onCrop={handleSave}
+                                onClose={onCancel}
+                                label="Upload and Crop"
+                                src={image}
                             />
                         </div>
                         <div className="mt-4 flex justify-center space-x-4">
                             <button
                                 className="bg-primary-color w-[90px] text-text-board-color px-5 py-2 rounded"
-                                onClick={handleSave}
+                                onClick={() => onSave(preview)}
                             >
                                 Save
                             </button>
