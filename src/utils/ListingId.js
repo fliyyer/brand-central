@@ -2,7 +2,7 @@ export const listing = [
     {
         id: 1,
         title: "Semarang Grand City",
-        listing: "08962",
+        listing: "111111",
         location: "Semarang",
         image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
     },
