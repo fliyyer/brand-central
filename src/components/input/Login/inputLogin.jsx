@@ -9,6 +9,7 @@ const InputLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [loginError, setLoginError] = useState(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const togglePasswordVisibility = () => {
@@ -38,13 +39,16 @@ const InputLogin = () => {
             navigate('/');
         } catch (error) {
             dispatch(loginFailure(error.message));
-            console.error('Login Failure:', error);
+            setLoginError('Invalid email or password');
         }
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">
+                {loginError && (
+                    <div className="text-red-500 px-3 my-2">{loginError}</div>
+                )}
                 <div className="">
                     <input
                         type="email"
@@ -73,9 +77,9 @@ const InputLogin = () => {
                         onClick={togglePasswordVisibility}
                     >
                         {showPassword ? (
-                            <HiEye className='text-white w-6 h-6' />
+                            <HiEye className='dark:text-white text-[#5C5C5C] w-6 h-6' />
                         ) : (
-                            <HiEyeOff className='text-white w-6 h-6' />
+                            <HiEyeOff className='dark:text-white text-[#5C5C5C] w-6 h-6' />
                         )}
                     </div>
                 </div>
