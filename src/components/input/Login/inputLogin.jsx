@@ -84,7 +84,7 @@ const InputLogin = () => {
                     </div>
                 </div>
                 <div className="text-center">
-                    <button className='bg-primary-color rounded-[90px] w-full py-4 text-typo-color font-medium text-md px-3'>Log In</button>
+                    <button className='bg-primary-color rounded-[90px] w-full hover:bg-yellow-400 py-4 text-typo-color font-medium text-md px-3'>Log In</button>
                     <div className='flex items-center justify-center mt-[27px]'>
                         <hr className='flex-grow border-t-1 border-gray-300' />
                         <Link to='/forgot-password' className='px-2 text-gray-400'>Forgot Password</Link>
